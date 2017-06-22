@@ -4,7 +4,7 @@
 
 ## Team
 
-  - Jasuper Yu
+  - Jasper Yu
   - Ryan Platon
   - Peter Tan
 
