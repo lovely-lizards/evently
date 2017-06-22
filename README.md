@@ -1,2 +1,0 @@
-# evently
-Simplifying events logistics
