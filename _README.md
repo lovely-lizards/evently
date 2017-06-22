@@ -4,10 +4,9 @@
 
 ## Team
 
-  - teamMember
-  - teamMember
-  - teamMember
-  - teamMember
+  - Jasuper Yu
+  - Ryan Platon
+  - Peter Tan
 
 ## Table of Contents
 
