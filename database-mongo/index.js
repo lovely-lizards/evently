@@ -1,9 +1,6 @@
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/test');
-// mongoose.connect('mongodb://localhost/test',function(){
-//     /* Drop the DB */
-//     mongoose.connection.db.dropDatabase();
-// });
+
 var db = mongoose.connection;
 
 db.on('error', function() {
@@ -15,12 +12,43 @@ db.once('open', function() {
 });
 
 
-var designersSchema = mongoose.Schema({
+var hostsSchema = mongoose.Schema({
   name: {type: String, unique: true},
-  designType: String,
-  bio: String,
-  images: Array  
+  rating: Array,
+  events: Array
 });
 
-var Designer = mongoose.model('Designer', designersSchema);
+var Hosts = mongoose.model('Hosts', hostsSchema);
 
+
+var vendorsSchema = mongoose.Schema({
+  name: {type: String, unique: true},
+  type: Array,
+  location: String,
+  delivery: Array,
+  rating: Array
+});
+
+var Vendors = mongoose.model('Vendors', vendorsSchema);
+
+var eventsSchema = mongoose.Schema({
+  host: String,
+  needs: Array,
+  location: Array,
+  date: Date,
+  vendors: Array
+});
+
+var Events = mongoose.model('Events', eventsSchema);
+
+/*
+String
+Number
+Date
+Buffer
+Boolean
+Mixed
+Objectid
+Array
+
+ */
