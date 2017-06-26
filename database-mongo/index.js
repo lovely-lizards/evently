@@ -11,18 +11,97 @@ db.once('open', function() {
   console.log('mongoose connected successfully');
 });
 
+/* -----------------------Hosts----------------------- */
 
 var hostsSchema = mongoose.Schema({
-  name: {type: String, unique: true},
+  username: {type: String, unique: true},
+  name: String,
   rating: Array,
   events: Array
 });
 
 var Hosts = mongoose.model('Hosts', hostsSchema);
 
+var ryanPlaton = new Hosts ({
+  username: 'ryanPlaton',
+  name: 'Ryan Platon',
+  rating: [],
+  events: []
+});
+
+Hosts.findOne({ name: 'Ryan Platon'}, function (err, host){
+  if (err) {
+    console.log(err);
+  } else {
+    if (host === null) {
+      ryanPlaton.save(function(err, user) {
+        if (err) {
+          console.log(err);
+        } else {
+          console.log(`SAVED ${user.name.toUpperCase()} INTO DATABASE`);
+        }
+      });
+    } else {
+      console.log(host.name + ' is already in the HOSTS DB');
+    }
+  }
+});
+
+var jasperYu = new Hosts ({
+  username: 'jasperYu',
+  name: 'Jasper Yu',
+  rating: [],
+  events: []
+});
+
+Hosts.findOne({ name: 'Jasper Yu'}, function (err, host){
+  if (err) {
+    console.log(err);
+  } else {
+    if (host === null) {
+      jasperYu.save(function(err, user) {
+        if (err) {
+          console.log(err);
+        } else {
+          console.log(`SAVED ${user.name.toUpperCase()} INTO DATABASE`);
+        }
+      });
+    } else {
+      console.log(host.name + ' is already in the HOSTS DB');
+    }
+  }
+});
+
+var peterTan = new Hosts ({
+  username: 'peterTan',
+  name: 'Peter Tan',
+  rating: [],
+  events: []
+});
+
+Hosts.findOne({ name: 'Peter Tan'}, function (err, host){
+  if (err) {
+    console.log(err);
+  } else {
+    if (host === null) {
+      peterTan.save(function(err, user) {
+        if (err) {
+          console.log(err);
+        } else {
+          console.log(`SAVED ${user.name.toUpperCase()} INTO DATABASE`);
+        }
+      });
+    } else {
+      console.log(host.name + ' is already in the HOSTS DB');
+    }
+  }
+});
+
+/* -----------------------Vendors----------------------- */
 
 var vendorsSchema = mongoose.Schema({
-  name: {type: String, unique: true},
+  username: {type: String, unique: true},
+  name: String,
   type: Array,
   location: String,
   delivery: Array,
@@ -30,6 +109,8 @@ var vendorsSchema = mongoose.Schema({
 });
 
 var Vendors = mongoose.model('Vendors', vendorsSchema);
+
+/* -----------------------Events----------------------- */
 
 var eventsSchema = mongoose.Schema({
   host: String,
