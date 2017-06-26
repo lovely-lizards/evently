@@ -1,10 +1,13 @@
 var express = require('express');
 var bodyParser = require('body-parser');
+var db = require('../database-mongo/index.js')
 
 var app = express();
-app.use(bodyParser.urlencoded({extended: true}))
+// app.use(bodyParser.urlencoded({extended: true}))
+app.use( bodyParser.json() );
+app.use( bodyParser.urlencoded({ extended: true }) );
 
-// app.use(express.static(__dirname + '/../react-client/dist'));
+app.use( express.static(__dirname + '/../react-client/dist') );
 
 app.get('/', function (req, res) {
   res.end('Welcome to Evently')
