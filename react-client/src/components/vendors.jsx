@@ -1,12 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> added tabs on vendors
 class Vendors extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+<<<<<<< HEAD
 
+=======
+>>>>>>> added tabs on vendors
     }
   }
 
@@ -31,8 +37,12 @@ class Vendors extends React.Component {
 					{this.state.showTab === 'matched' ? <div> matched list</div> : null}
 				</div>
 			</div>
+<<<<<<< HEAD
 
 		)
+=======
+    )
+>>>>>>> added tabs on vendors
   }
 
 }

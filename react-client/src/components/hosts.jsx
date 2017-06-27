@@ -1,13 +1,18 @@
 import React from 'react';
+<<<<<<< HEAD
 
 import ReactDOM from 'react-dom';
 import CreateEvent from './CreateEvent.jsx';
 
+=======
+import ReactDOM from 'react-dom';
+>>>>>>> added tabs on vendors
 
 class Hosts extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+<<<<<<< HEAD
 
     }
   }
@@ -39,4 +44,18 @@ class Hosts extends React.Component {
 
 
 
+=======
+    }
+  }
+  
+  render() {
+    return (
+			<div>
+				<h3>hi</h3>
+			</div>
+    );
+  }
+}
+
+>>>>>>> added tabs on vendors
 export default Hosts;
