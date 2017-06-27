@@ -17,22 +17,44 @@ app.use(function(req, res, next) {
 //===============
 
 app.get('/api/vendors', function(req, res) {
-  res.end(`URL: ${req.url}, Method: ${req.method}`);
+
+  db.Vendors.find( (err, vendors) => {
+
+    res.send(vendors);
+
+  });
+
 });
 
 app.get('/api/hosts', function(req, res) {
-  res.end(`URL: ${req.url}, Method: ${req.method}`);
+
+  db.Hosts.find( (err, hosts) => {
+
+    res.send(hosts);
+
+  });
+
 });
 
 app.get('/api/events', function(req, res) {
-  res.end(`URL: ${req.url}, Method: ${req.method}`);
+
+  db.Events.find( (err, events) => {
+
+    res.send(events);
+
+  });
+
 });
 
 
 app.get('/api/events/:id', function(req, res ) {
 
-  console.log(`EVENT ID REQUESTED: ${req.params.id}`); //---> this will get the :id or whatever we decide to call it.
-  res.end(`URL: ${req.url}, Method: ${req.method}, EVENT ID: ${req.params.id}`);
+  db.Events.findOne({_id: req.params.id}, (err, event) => {
+
+    res.send(event);
+
+  });
+
 });
 
 //================
