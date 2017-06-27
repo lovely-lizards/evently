@@ -259,7 +259,7 @@ Events.findOne({ host: 'ryanPlaton', date: '07/01/2017' }, function (err, event)
       });
     } else {
       // console.log('FIND ONE FOR PETER', host);
-      console.log(event.host + event.date + ' is already in the VENDORS DB');
+      console.log(event.host + event.date + ' is already in the EVENTS DB');
     }
   }
 });
@@ -290,7 +290,7 @@ Events.findOne({ host: 'jasperYu', date: '07/05/2017' }, function (err, event){
       });
     } else {
       // console.log('FIND ONE FOR PETER', host);
-      console.log(event.host + event.date + ' is already in the VENDORS DB');
+      console.log(event.host + event.date + ' is already in the EVENTS DB');
     }
   }
 });
@@ -321,7 +321,7 @@ Events.findOne({ host: 'peterTan', date: '07/08/2017' }, function (err, event){
       });
     } else {
       // console.log('FIND ONE FOR PETER', host);
-      console.log(event.host + event.date + ' is already in the VENDORS DB');
+      console.log(event.host + event.date + ' is already in the EVENTS DB');
     }
   }
 });

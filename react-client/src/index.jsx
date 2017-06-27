@@ -1,13 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
+import Landing from './components/landing.jsx';
+import Hosts from './components/hosts.jsx';
+import Vendors from './components/vendors.jsx';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = { 
-      hosts: [],
-      vendors: []
+      currentPage: 'landing'
     }
   }
 
@@ -37,7 +39,9 @@ class App extends React.Component {
     return (
       <div className="container">
         <h1>Evently</h1>
-      
+      {
+        this.state.currentPage === 'landing' ? <Landing/> : null
+      }
       </div>)
   }
 }
