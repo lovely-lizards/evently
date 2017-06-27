@@ -326,6 +326,10 @@ Events.findOne({ host: 'peterTan', date: '07/08/2017' }, function (err, event){
   }
 });
 
+module.exports.Hosts = Hosts;
+module.exports.Events = Events;
+module.exports.Vendors = Vendors;
+
 /*
 String
 Number
