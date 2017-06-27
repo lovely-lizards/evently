@@ -1,15 +1,69 @@
 var express = require('express');
+var passport = require('passport');
 var bodyParser = require('body-parser');
-var db = require('../database-mongo/index.js')
+var fbConfig = require('./config/fb.js');
+var db = require('../database-mongo/index.js');
+var FacebookStrategy = require('passport-facebook').Strategy;
+
+passport.use(new FacebookStrategy({
+    clientID: fbConfig.appID,
+    clientSecret: fbConfig.appSecret,
+    callbackURL: fbConfig.callbackUrl
+  },
+  function(accessToken, refreshToken, profile, cb) {
+
+    console.log(
+
+      'AccessToken:', accessToken,
+      'RefreshToken:', refreshToken,
+      'Profile:', profile
+
+    )
+
+    db.Hosts.find({ name: 'Ryan Platon' }, function (err, user) {
+      console.log('auth db.host.find =====>>', user);
+      return cb(err, user);
+    });
+  }
+));
+
+passport.serializeUser(function(user, cb) {
+  cb(null, user);
+});
+
+passport.deserializeUser(function(obj, cb) {
+  cb(null, obj);
+});
+
+
 var app = express();
-app.use( bodyParser.json() );
-app.use( bodyParser.urlencoded({ extended: true }) );
 app.use( express.static(__dirname + '/../react-client/dist') );
+app.use(require('cookie-parser')());
+app.use( bodyParser.urlencoded({ extended: true }) );
+app.use(require('express-session')({ secret: 'keyboard cat', resave: true, saveUninitialized: true }));
+
+
+// Initialize Passport and restore authentication state, if any, from the
+// session.
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Server Log Middleware
 app.use(function(req, res, next) {
   console.log(`${req.method} ${req.url} ${new Date()}`);
   next();
+});
+
+//Test Routes for FB Auth
+
+app.get('/success', function(req, res) {
+  console.log('FB AUTH SUCCESS');
+  res.send('FB AUTH SUCCESS')
+});
+
+app.get('/failed', function(req, res) {
+  console.log('FB AUTH FAILED');
+  res.send('FB AUTH FAILED')
 });
 
 //===============
@@ -75,6 +129,20 @@ app.put('/api/events/:id', function(req, res) {
   console.log('Updating event with ID:', req.params.id);
   res.send('Updated event with ID: ', req.params.id);
 });
+
+
+//=====================
+// FACEBOOK AUTH ROUTES
+//=====================
+
+app.get('/auth/facebook', passport.authenticate('facebook'));
+
+app.get('/auth/facebook/callback',
+  passport.authenticate('facebook', { failureRedirect: '/failed' }),
+  function(req, res) {
+    // Successful authentication, redirect home.
+    res.redirect('/success');
+  });
 
 
 app.listen(process.env.PORT || 3000, function() {
