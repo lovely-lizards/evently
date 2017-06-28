@@ -10,10 +10,10 @@ class CreateEvent extends React.Component {
 			photoOptions: ['Wedding', 'Studio', 'Product', 'Landscape', 'Event'],
 			foodPicks: [],
 			musicPicks: [],
-			photographyPicks: [],
+			photoPicks: [],
 			foodBudget: 0,
 			musicBudget: 0,
-			photographyBudget: 0,
+			photoBudget: 0,
 			address: '',
 			notes: '',
 			defaultChecked: false
@@ -21,6 +21,21 @@ class CreateEvent extends React.Component {
   }
 
 	checkListsFood(event) {
+		var isChecked = event.target.checked;
+		var foodValue = event.target.value;
+		if (isChecked) {
+			this.setState((prevState, props) => ({
+				foodPicks: prevState.foodPicks.concat([foodValue])
+			}))
+		} else {
+			var foodIndex = this.state.foodPicks.indexOf(foodValue);
+			var newArray = this.state.foodPicks.splice(foodIndex,1);
+			this.setState({
+				foodPicks: this.state.foodPicks
+			});
+		}
+	}
+	checkListFood(event) {
 		var isChecked = event.target.checked;
 		var foodValue = event.target.value;
 		if (isChecked) {
@@ -53,21 +68,52 @@ class CreateEvent extends React.Component {
 		console.log(this.state.musicPicks);
 	}
 
-	checkListFood(event) {
+	checkListPhoto(event) {
 		var isChecked = event.target.checked;
-		var foodValue = event.target.value;
+		var photoValue = event.target.value;
 		if (isChecked) {
 			this.setState((prevState, props) => ({
-				foodPicks: prevState.foodPicks.concat([foodValue])
+			photoPicks: prevState.musicPicks.concat([photoValue])
 			}))
 		} else {
-			var foodIndex = this.state.foodPicks.indexOf(foodValue);
-			var newArray = this.state.foodPicks.splice(foodIndex,1);
+			var photoIndex = this.state.musicPicks.indexOf(photoValue);
+			var newArray = this.state.musicPicks.splice(photoIndex,1);
 			this.setState({
-				foodPicks: this.state.foodPicks
+				photoPicks: this.state.photoPicks
 			});
 		}
+		console.log(this.state.photoPicks);
 	}
+
+	handleAddressChange(event) {
+		this.setState({address: event.target.value})
+		console.log(this.state.address);
+	}
+
+	handleNoteChange(event) {
+		this.setState({notes: event.target.value})
+		console.log(this.state.notes);
+	}
+
+	foodBudgetChange(event) {
+		this.setState({foodBudget: event.target.value})
+		console.log(this.state.foodBudget);
+	}
+
+	musicBudgetChange(event) {
+		this.setState({musicBudget: event.target.value})
+		console.log(this.state.musicBudget);
+	}
+
+	photoBudgetChange(event) {
+		this.setState({foodBudget: event.target.value})
+		console.log(this.state.photoBudget);
+	}
+
+	submitData() {
+		console.log('this will send data');
+	}
+
 
 	render () {
 		return (
@@ -86,7 +132,7 @@ class CreateEvent extends React.Component {
 								</li>
 							))}
 							<li>
-								Budget: <input type="number" name="food budget" />
+								Budget: <input type="number" name="food budget" onChange={this.foodBudgetChange.bind(this)}/>
 							</li>
 						</ul>
 						<ul>
@@ -101,33 +147,36 @@ class CreateEvent extends React.Component {
 								</li>
 							))}
 							<li>
-								Budget: <input type="number" name="music budget" />
+								Budget: <input type="number" name="music budget" onChange={this.musicBudgetChange.bind(this)} />
 							</li>
 						</ul>
 						<ul>
 							<li>Photography</li>
 							{this.state.photoOptions.map((photo, key) => (
 								<li key={key}> 
-									<input type="checkbox" defaultChecked={this.state.defaultChecked} />
+									<input type="checkbox" defaultChecked={this.state.defaultChecked} 
+									value={photo}
+									onClick={this.checkListPhoto.bind(this)} />
 									{photo}
 								</li>
 							))}
 							<li>
-								Budget: <input type="number" name="photography budget" />
+								Budget: <input type="number" name="photography budget" onChange={this.photoBudgetChange.bind(this)}/>
 							</li>
 						</ul>
 				</div>
 				<div id='location'>
 					<h1>Location</h1>
-					Address: <input type="text" name="address" />
+					Address: <input type="text" name="address" value={this.state.address} onChange={this.handleAddressChange.bind(this)} />
 				</div>
 				<div id='Note'>
 					<h1>Notes</h1>
 					Additional Information: 
 					<li>
-						<textarea rows="6" cols="60"></textarea>
+						<textarea rows="6" cols="60" value={this.state.notes} onChange={this.handleNoteChange.bind(this)}></textarea>
 					</li>
 				</div>
+				<button onClick={this.submitData.bind(this)}> Submit Form </button>
 			</div>
 		)
 	}
