@@ -1,8 +1,6 @@
 import React from 'react';
-
 import ReactDOM from 'react-dom';
 import CreateEvent from './CreateEvent.jsx';
-
 
 class Hosts extends React.Component {
   constructor(props) {
@@ -36,7 +34,4 @@ class Hosts extends React.Component {
     )
   }
 }
-
-
-
 export default Hosts;
