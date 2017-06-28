@@ -1,24 +1,21 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDom from 'react-dom';
 import $ from 'jquery';
-import Hosts from './components/hosts.jsx';
-import Vendors from './components/vendors.jsx';
-import Landing from './components/landing.jsx';
+import Hosts from './hosts.jsx';
+import Vendors from './vendors.jsx';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { 
+    this.state = {
       currentPage: 'host'
-    }
+    };
   }
-  
   changeView(page) {
-    this.setState ({
+    this.setState({
       currentPage: page
     })
   }
-
   render () {
     return (
       <div>
@@ -36,13 +33,12 @@ class App extends React.Component {
           <div>
             {this.state.currentPage === 'host' ? <Hosts/> : null}
             {this.state.currentPage === 'vendor' ? <Vendors/> : null}
-            {this.state.currentPage === 'landing' ? <Landing/> : null}
           </div>
         </div>
       </div>
     )
-
   }
+
 }
 
-ReactDOM.render(<App />, document.getElementById('evently'));
+export default App; 

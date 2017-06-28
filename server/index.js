@@ -131,6 +131,7 @@ app.get('/auth/facebook', passport.authenticate('facebook'));
 app.get('/auth/facebook/callback',
   passport.authenticate('facebook', { failureRedirect: '/failed' }),
   function(req, res) {
+    console.log('INSIDE APP.GET PASSPORT');
     // Successful authentication, redirect home.
     res.redirect('/main');
   });
