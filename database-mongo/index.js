@@ -1,8 +1,8 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/test');
-// mongoose.connect('mongodb://localhost/test', function(){
-//   mongoose.connection.db.dropDatabase();
-// });
+// mongoose.connect('mongodb://localhost/test');
+mongoose.connect('mongodb://localhost/test', function(){
+  mongoose.connection.db.dropDatabase();
+});
 
 var db = mongoose.connection;
 
@@ -143,23 +143,7 @@ ryanPlaton.save(function(err, user) {
 })
 
 
-// Hosts.findOne({ name: 'Ryan Platon' }, function (err, host){
-//   if (err) {
-//     console.log(err);
-//   } else {
-//     if (host === null) {
-//       ryanPlaton.save(function(err, user) {
-//         if (err) {
-//           console.log(err);
-//         } else {
-//           console.log(`SAVED ${user.name.toUpperCase()} INTO DATABASE`);
-//         }
-//       });
-//     } else {
-//       console.log(host.name + ' is already in the HOSTS DB');
-//     }
-//   }
-// });
+
 
 
 
@@ -198,8 +182,17 @@ var jasperYu07052017 = new Events ({
   vendors: []
 });
 
-jasperYu07052017.save(function(err, event) {
-  console.log(`SAVED ${event.id} INTO EVENTS DB`);
+Events.findOne({ location: '944 Market St, San Francisco, CA' }, function (err, event){
+  if (err) {
+  } else {
+    if (event === null) {
+      jasperYu07052017.save(function(err, event) {
+        console.log(`SAVED ${event.id} INTO EVENTS DB`);
+      });
+    } else {
+      console.log(event.userid + ' is already in the HOSTS DB');
+    }
+  }
 });
 
 var peterTan07082017 = new Events ({
@@ -223,9 +216,20 @@ var peterTan07082017 = new Events ({
   vendors: []
 });
 
-peterTan07082017.save(function(err, event) {
-  console.log(`SAVED ${event.id} INTO EVENTS DB`);
+Events.findOne({ location: '611 Mission St #2, San Francisco, CA 94105' }, function (err, event){
+  if (err) {
+  } else {
+    if (event === null) {
+      peterTan07082017.save(function(err, event) {
+        console.log(`SAVED ${event.id} INTO EVENTS DB`);
+      });
+    } else {
+      console.log(event.userid + ' is already in the HOSTS DB');
+    }
+  }
 });
+
+
 
 var ryanPlaton07102017 = new Events ({
   userid: 100576853912922,
@@ -247,8 +251,18 @@ var ryanPlaton07102017 = new Events ({
   date: 07102017,
   vendors: []
 });
-ryanPlaton07102017.save(function(err, event) {
-  console.log(`SAVED ${event.id} INTO EVENTS DB`);
+
+Events.findOne({ location: '611 Mission St #2, San Francisco, CA 94105' }, function (err, event){
+  if (err) {
+  } else {
+    if (event === null) {
+      ryanPlaton07102017.save(function(err, event) {
+        console.log(`SAVED ${event.id} INTO EVENTS DB`);
+      });
+    } else {
+      console.log(event.userid + ' is already in the HOSTS DB');
+    }
+  }
 });
 
 module.exports.Users = Users;
