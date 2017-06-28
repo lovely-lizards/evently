@@ -1,3 +1,4 @@
+var path = require('path');
 var express = require('express');
 var passport = require('passport');
 var bodyParser = require('body-parser');
@@ -12,16 +13,7 @@ passport.use(new FacebookStrategy({
   },
   function(accessToken, refreshToken, profile, cb) {
 
-    console.log(
-
-      'AccessToken:', accessToken,
-      'RefreshToken:', refreshToken,
-      'Profile:', profile
-
-    )
-
-    db.Hosts.find({ name: 'Ryan Platon' }, function (err, user) {
-      console.log('auth db.host.find =====>>', user);
+    db.Users.find({ id: profile.id }, function (err, user) {
       return cb(err, user);
     });
   }
@@ -56,9 +48,8 @@ app.use(function(req, res, next) {
 
 //Test Routes for FB Auth
 
-app.get('/success', function(req, res) {
-  console.log('FB AUTH SUCCESS');
-  res.send('FB AUTH SUCCESS')
+app.get('/main', function(req, res) {
+  res.sendFile(path.resolve(__dirname + '/../react-client/dist/index.html'));
 });
 
 app.get('/failed', function(req, res) {
@@ -141,7 +132,7 @@ app.get('/auth/facebook/callback',
   passport.authenticate('facebook', { failureRedirect: '/failed' }),
   function(req, res) {
     // Successful authentication, redirect home.
-    res.redirect('/success');
+    res.redirect('/main');
   });
 
 
