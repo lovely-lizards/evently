@@ -20,6 +20,55 @@ class CreateEvent extends React.Component {
     }
   }
 
+	checkListsFood(event) {
+		var isChecked = event.target.checked;
+		var foodValue = event.target.value;
+		if (isChecked) {
+			this.setState((prevState, props) => ({
+				foodPicks: prevState.foodPicks.concat([foodValue])
+			}))
+		} else {
+			var foodIndex = this.state.foodPicks.indexOf(foodValue);
+			var newArray = this.state.foodPicks.splice(foodIndex,1);
+			this.setState({
+				foodPicks: this.state.foodPicks
+			});
+		}
+	}
+
+	checkListMusic(event) {
+		var isChecked = event.target.checked;
+		var musicValue = event.target.value;
+		if (isChecked) {
+			this.setState((prevState, props) => ({
+				musicPicks: prevState.musicPicks.concat([musicValue])
+			}))
+		} else {
+			var musicIndex = this.state.musicPicks.indexOf(musicValue);
+			var newArray = this.state.musicPicks.splice(musicIndex,1);
+			this.setState({
+				musicPicks: this.state.musicPicks
+			});
+		}
+		console.log(this.state.musicPicks);
+	}
+
+	checkListFood(event) {
+		var isChecked = event.target.checked;
+		var foodValue = event.target.value;
+		if (isChecked) {
+			this.setState((prevState, props) => ({
+				foodPicks: prevState.foodPicks.concat([foodValue])
+			}))
+		} else {
+			var foodIndex = this.state.foodPicks.indexOf(foodValue);
+			var newArray = this.state.foodPicks.splice(foodIndex,1);
+			this.setState({
+				foodPicks: this.state.foodPicks
+			});
+		}
+	}
+
 	render () {
 		return (
 			<div>
@@ -29,7 +78,10 @@ class CreateEvent extends React.Component {
 							<li>Food</li>
 							{this.state.foodOptions.map((food, key) => (
 								<li key={key}> 
-									<input type="checkbox" defaultChecked={this.state.defaultChecked} />
+									<input type="checkbox" 
+									defaultChecked={this.state.defaultChecked} 
+									value={food} 
+									onClick={this.checkListFood.bind(this)}/>
 									{food}
 								</li>
 							))}
@@ -41,7 +93,10 @@ class CreateEvent extends React.Component {
 							<li>Music</li>
 							{this.state.musicOptions.map((music, key) => (
 								<li key={key}> 
-									<input type="checkbox" defaultChecked={this.state.defaultChecked} />
+									<input type="checkbox" 
+									defaultChecked={this.state.defaultChecked} 
+									value={music}
+									onClick={this.checkListMusic.bind(this)} />
 									{music}
 								</li>
 							))}
