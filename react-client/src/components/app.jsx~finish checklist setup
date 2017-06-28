@@ -9,7 +9,8 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = { 
-      currentPage: 'landing'
+      currentPage: 'landing',
+      hostForm: {}
     }
   }
   
@@ -17,6 +18,14 @@ class App extends React.Component {
     this.setState ({
       currentPage: page
     })
+    console.log(this.state.hostForm);
+  }
+
+  handleForm(data) {
+    this.setState({
+      hostForm: data
+    });
+    console.log(this.state.hostForm);
   }
 
   render () {
@@ -34,7 +43,7 @@ class App extends React.Component {
           Vendor
           </span>
           <div>
-            {this.state.currentPage === 'host' ? <Hosts/> : null}
+            {this.state.currentPage === 'host' ? <Hosts form={this.handleForm.bind(this)}/> : null}
             {this.state.currentPage === 'vendor' ? <Vendors/> : null}
             {this.state.currentPage === 'landing' ? <Landing/> : null}
           </div>

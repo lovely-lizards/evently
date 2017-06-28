@@ -16,6 +16,7 @@ class CreateEvent extends React.Component {
 			photoBudget: 0,
 			address: '',
 			notes: '',
+			date: '',
 			defaultChecked: false
     }
   }
@@ -110,8 +111,72 @@ class CreateEvent extends React.Component {
 		console.log(this.state.photoBudget);
 	}
 
+	dateChange(event) {
+		console.log(event.target.value);
+		this.setState({date: event.target.value})
+		console.log(this.state.date);
+	}
+
+	//   userid: 10158962670505581,
+  // needs: {
+  //   food: {
+  //     budget: 200,
+  //     chinese: true
+  //   },
+  //   music: {
+  //     budget: 300,
+  //     edm: true
+  //   },
+  //   photography: {
+  //     budget: 300,
+  //     events: true
+  //   }
+  // },
+  // location: '611 Mission St #2, San Francisco, CA 94105',
+  // date: 07082017,
+  // vendors: []
+
 	submitData() {
-		console.log('this will send data');
+		var numberDate = new Date(this.state.date);
+		console.log(numberDate);
+		
+
+		var submitData = {
+			needs: {
+				food: {
+					budget: this.state.foodBudget,
+				},
+				music: {
+					budget: this.state.musicBudget,
+				},
+				photography: {
+					budget: this.state.photoBudget,
+				}
+			},
+			location: this.state.address,
+			date: this.state.date,
+			notes: this.state.notes,
+			vendors: []
+		}
+
+		if (this.state.foodPicks) {
+			this.state.foodPicks.forEach(function(foodType) {
+				submitData.needs.food[foodType] = true;
+			});
+		}
+
+		if (this.state.musicPicks) {
+			this.state.musicPicks.forEach(function(musicType) {
+				submitData.needs.music[musicType] = true;
+			});
+		}
+		
+		if (this.state.photoPicks) {
+			this.state.photoPicks.forEach(function(photoType) {
+				submitData.needs.photography[photoType] = true;
+			});
+		}
+		console.log(submitData);
 	}
 
 
@@ -119,6 +184,7 @@ class CreateEvent extends React.Component {
 		return (
 			<div>
 				<div id='needs'>
+					<span>Date of Event</span> <input type="date" name="event date" onChange={this.dateChange.bind(this)}/>
 					<h1>Needs</h1>
 						<ul>
 							<li>Food</li>
