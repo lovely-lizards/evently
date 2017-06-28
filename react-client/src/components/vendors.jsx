@@ -32,15 +32,7 @@ class Vendors extends React.Component {
 				</div>
 			</div>
 
-    }
-  }
-
-  render() {
-    return (
-      <div >
-        <h3> Inside Vendors Component </h3>
-      </div>
-    )
+		)
   }
 
 }
