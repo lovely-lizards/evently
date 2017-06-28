@@ -130,16 +130,16 @@ var ryanPlaton = new Users({
 });
 
 jasperYu.save(function(err, user) {
-  console.log(`SAVED ${user.name} INTO USER DB`);
+  // console.log(`SAVED ${user.name} INTO USER DB`);
 })
 
 peterTan.save(function(err, user) {
-  console.log(`SAVED ${user.name} INTO USER DB`);
+  // console.log(`SAVED ${user.name} INTO USER DB`);
 
 })
 
 ryanPlaton.save(function(err, user) {
-  console.log(`SAVED ${user.name} INTO USER DB`);
+  // console.log(`SAVED ${user.name} INTO USER DB`);
 })
 
 

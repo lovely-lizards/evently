@@ -12,23 +12,6 @@ class App extends React.Component {
       currentPage: 'host'
     }
   }
-
-  // searchDesigners (designType) {
-  //   $.ajax({
-  //     url: '/designers',
-  //     method: 'GET',
-  //     data: {designType: designType},
-  //     success: (designers) => {
-  //       // console.log('INSIDE SEARCH DESIGNERS: ', designers);
-  //       this.setState({
-  //         designers: designers
-  //       })
-  //     },
-  //     error: (err) => {
-  //       console.log('err', err);
-  //     }
-  //   })
-  // }
   
   changeView(page) {
     this.setState ({
@@ -58,18 +41,7 @@ class App extends React.Component {
         </div>
       </div>
     )
-      <div className="container">
-        <h1>Evently</h1>
-      {
-        this.state.currentPage === 'landing' ? <Landing/> : null
-      }
-      {
-        this.state.currentPage === 'hosts' ? <Hosts/> : null
-      }
-      {
-        this.state.currentPage === 'vendors' ? <Landing/> : null
-      }
-      </div>)
+
   }
 }
 
