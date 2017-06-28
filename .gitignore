@@ -31,3 +31,4 @@ node_modules
 database-mongo/data/db
 react-clent/dist/bundle.js
 server/config/fb.js
+.DS_Store
