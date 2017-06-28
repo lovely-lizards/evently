@@ -1,48 +1,54 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
-import Hosts from './components/hosts.jsx';
-import Vendors from './components/vendors.jsx';
-import Landing from './components/landing.jsx';
+// import Hosts from './components/hosts.jsx';
+// import Vendors from './components/vendors.jsx';
+// import Landing from './components/landing.jsx';
+import App from './components/app.jsx';
 
-class App extends React.Component {
+class Login extends React.Component {
   constructor(props) {
     super(props);
     this.state = { 
-      currentPage: 'host'
-    }
+      path: window.location.pathname
+    };
   }
-  
-  changeView(page) {
-    this.setState ({
-      currentPage: page
-    })
+
+  // loginClick() {
+  //   console.log('INSIDE LOGIN CLICK')
+  //   // $.ajax({
+  //   //   url: '/auth/facebook',
+  //   //   method: 'GET',
+  //   //   success: function(results) {
+  //   //     console.log('INSIDE SUCCESS OF LOGINCLICK')
+  //   //   }
+  //   // });
+  // }
+
+  componentDidMount() {
+
   }
 
   render () {
     return (
-      <div>
-        {console.log(this.state.currentPage)}
-        <div className="container">
-          <h1>Evently</h1>
-          <span className={this.state.view === 'host' ? 'nav-selected' : 'nav-unselected'}
-          onClick={() => this.changeView('host')}>
-          Host
-          </span>
-          <span className={this.state.view === 'vendor' ? 'nav-selected' : 'nav-unselected'}
-          onClick={() => this.changeView('vendor')}>
-          Vendor
-          </span>
-          <div>
-            {this.state.currentPage === 'host' ? <Hosts/> : null}
-            {this.state.currentPage === 'vendor' ? <Vendors/> : null}
-            {this.state.currentPage === 'landing' ? <Landing/> : null}
-          </div>
-        </div>
+      <div className="container">
+        {        
+          this.state.path !== '/main' ? 
+            <div>
+              <h1>Evently Login</h1>
+              <form action="/auth/facebook">
+                <button type="submit" className="btn btn-primary containerCenter">Login</button>              
+              </form>
+            </div> : <App/>
+        }
       </div>
     )
 
   }
 }
 
-ReactDOM.render(<App />, document.getElementById('evently'));
+ReactDOM.render(<Login />, document.getElementById('evently'));
+
+
+// <span className={this.state.view === 'vendor' ? 'nav-selected' : 'nav-unselected'}
+// onClick={() => this.changeView('vendor')}>

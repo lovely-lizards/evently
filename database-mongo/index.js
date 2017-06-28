@@ -1,8 +1,8 @@
 var mongoose = require('mongoose');
-// mongoose.connect('mongodb://localhost/test');
-mongoose.connect('mongodb://localhost/test', function(){
-  mongoose.connection.db.dropDatabase();
-});
+mongoose.connect('mongodb://localhost/test');
+// mongoose.connect('mongodb://localhost/test', function(){
+//   mongoose.connection.db.dropDatabase();
+// });
 
 var db = mongoose.connection;
 
