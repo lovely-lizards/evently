@@ -12,23 +12,6 @@ class App extends React.Component {
       currentPage: 'host'
     }
   }
-
-  // searchDesigners (designType) {
-  //   $.ajax({
-  //     url: '/designers',
-  //     method: 'GET',
-  //     data: {designType: designType},
-  //     success: (designers) => {
-  //       // console.log('INSIDE SEARCH DESIGNERS: ', designers);
-  //       this.setState({
-  //         designers: designers
-  //       })
-  //     },
-  //     error: (err) => {
-  //       console.log('err', err);
-  //     }
-  //   })
-  // }
   
   changeView(page) {
     this.setState ({
