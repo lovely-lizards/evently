@@ -20,11 +20,17 @@ passport.use(new FacebookStrategy({
 ));
 
 passport.serializeUser(function(user, cb) {
-  cb(null, user);
+  console.log('SERIALIZE USER =====>', user[0].id);
+  cb(null, user[0].id);
 });
 
-passport.deserializeUser(function(obj, cb) {
-  cb(null, obj);
+passport.deserializeUser(function(id, cb) {
+
+  db.Users.find({id : id}, function(err, user){
+     if(err) cb(err);
+        console.log('FOUND USER ==>', user);
+        cb(null, user[0]);
+     });
 });
 
 
@@ -32,7 +38,7 @@ var app = express();
 app.use( express.static(__dirname + '/../react-client/dist') );
 app.use(require('cookie-parser')());
 app.use( bodyParser.urlencoded({ extended: true }) );
-app.use(require('express-session')({ secret: 'keyboard cat', resave: true, saveUninitialized: true }));
+app.use(require('express-session')({ secret: 'keyboard cat', resave: true, saveUninitialized: false }));
 
 
 // Initialize Passport and restore authentication state, if any, from the
@@ -55,6 +61,11 @@ app.get('/main', function(req, res) {
 app.get('/failed', function(req, res) {
   console.log('FB AUTH FAILED');
   res.send('FB AUTH FAILED')
+});
+
+app.get('/user', function(req, res, next) {
+
+    res.send(req.user);
 });
 
 //===============
@@ -107,7 +118,61 @@ app.get('/api/events/:id', function(req, res ) {
 //================
 
 app.post('/api/events', function(req, res) {
-  // CREATE NEW EVENT
+
+  /*
+  userid: 100576853912922,
+  needs: {
+    food: {
+      budget: 200,
+      chinese: true
+    },
+    music: {
+      budget: 300,
+      edm: true
+    },
+    photography: {
+      budget: 300,
+      events: true
+    }
+  },
+  location: '611 Mission St #2, San Francisco, CA 94105',
+  date: 07102017,
+  vendors: []
+  */
+
+  /*
+  { needs: {
+      food: {
+        budget: '123123',
+        Japanese: 'true'
+    },
+     music: { budget: '123123', House: 'true' },
+     photography: { budget: '0', House: 'true', Wedding: 'true' } },
+  location: '944 market',
+  date: '2017-06-22',
+  notes: 'Something' }
+
+
+  */
+
+  console.log('WHAT TYPE IS THIS ===>>', typeof req.user.id)
+
+  var event = req.body;
+
+  event.userid = req.user.id;
+
+  console.log(event);
+
+  db.Events.create(event, function(err, event) {
+    if(err) {
+      console.log(err);
+    }
+
+    console.log('EVENT CREATED ====>', event);
+
+  });
+
+  res.end();
 });
 
 //================

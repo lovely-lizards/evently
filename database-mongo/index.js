@@ -153,14 +153,14 @@ var eventsSchema = mongoose.Schema({
   userid: Number,
   needs: mongoose.Schema.Types.Mixed,
   location: String,
-  date: Number,
+  date: String,
   vendors: Array
 });
 
 var Events = mongoose.model('Events', eventsSchema);
 
 var jasperYu07052017 = new Events ({
-  userid: '10158962670505581',
+  userid: 10158962670505581,
   needs: {
     food: {
       budget: 200,
@@ -175,7 +175,7 @@ var jasperYu07052017 = new Events ({
     photography: {
       budget: 300,
       events: true
-    }    
+    }
   },
   location: '944 Market St, San Francisco, CA',
   date: 07052017,
