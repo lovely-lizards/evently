@@ -58,6 +58,18 @@ class App extends React.Component {
         </div>
       </div>
     )
+      <div className="container">
+        <h1>Evently</h1>
+      {
+        this.state.currentPage === 'landing' ? <Landing/> : null
+      }
+      {
+        this.state.currentPage === 'hosts' ? <Hosts/> : null
+      }
+      {
+        this.state.currentPage === 'vendors' ? <Landing/> : null
+      }
+      </div>)
   }
 }
 

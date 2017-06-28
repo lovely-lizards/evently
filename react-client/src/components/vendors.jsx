@@ -1,10 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+
 class Vendors extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+
     }
   }
 
@@ -29,6 +31,15 @@ class Vendors extends React.Component {
 					{this.state.showTab === 'matched' ? <div> matched list</div> : null}
 				</div>
 			</div>
+
+    }
+  }
+
+  render() {
+    return (
+      <div >
+        <h3> Inside Vendors Component </h3>
+      </div>
     )
   }
 

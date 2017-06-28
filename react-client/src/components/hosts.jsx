@@ -1,11 +1,14 @@
 import React from 'react';
+
 import ReactDOM from 'react-dom';
 import CreateEvent from './CreateEvent.jsx';
+
 
 class Hosts extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+
     }
   }
   
@@ -32,6 +35,20 @@ class Hosts extends React.Component {
 			</div>
     )
   }
+}
+
+
+    }
+  }
+
+  render() {
+    return (
+      <div >
+        <h3> Inside Hosts Component </h3>
+      </div>
+    )
+  }
+
 }
 
 
