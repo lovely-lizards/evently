@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import utils from '../utils.js';
 
 class CreateEvent extends React.Component {
   constructor(props) {
@@ -17,6 +18,7 @@ class CreateEvent extends React.Component {
 			address: '',
 			notes: '',
 			date: '',
+			title: '',
 			defaultChecked: false
     }
   }
@@ -117,15 +119,22 @@ class CreateEvent extends React.Component {
 		console.log(this.state.date);
 	}
 
-	//   userid: 10158962670505581,
+	titleChange(event) {
+		this.setState({title: event.target.value})
+		console.log(this.state.title);
+	}
+
+	// userid: 10158962670505581,
   // needs: {
   //   food: {
   //     budget: 200,
-  //     chinese: true
+  //     Chinese: true,
+	//		 Japanese: true,
   //   },
   //   music: {
   //     budget: 300,
-  //     edm: true
+  //     edm: true,
+	//     Rock: true,
   //   },
   //   photography: {
   //     budget: 300,
@@ -133,7 +142,8 @@ class CreateEvent extends React.Component {
   //   }
   // },
   // location: '611 Mission St #2, San Francisco, CA 94105',
-  // date: 07082017,
+  // date: '2017-06-27',
+	// note: 'vegas prease',
   // vendors: []
 
 	submitData() {
@@ -142,6 +152,7 @@ class CreateEvent extends React.Component {
 		
 
 		var submitData = {
+			title: this.state.title,
 			needs: {
 				food: {
 					budget: this.state.foodBudget,
@@ -177,6 +188,8 @@ class CreateEvent extends React.Component {
 			});
 		}
 		console.log(submitData);
+
+		utils.createEvent(submitData);
 	}
 
 
@@ -184,7 +197,8 @@ class CreateEvent extends React.Component {
 		return (
 			<div>
 				<div id='needs'>
-					<span>Date of Event</span> <input type="date" name="event date" onChange={this.dateChange.bind(this)}/>
+					<div>Event Title</div> <input type="text" name="event-title" onChange={this.titleChange.bind(this)}/>
+					<div>Date of Event</div> <input type="date" name="event-date" onChange={this.dateChange.bind(this)}/>
 					<h1>Needs</h1>
 						<ul>
 							<li>Food</li>

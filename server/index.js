@@ -136,8 +136,10 @@ app.post('/api/events', function(req, res) {
       console.log(err);
     }
 
+    console.log('EVENT CREATED ====>', event);
 
   });
+
   res.end();
 });
 

@@ -6,6 +6,7 @@ class Vendors extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+
       showTab: 'upcoming',
       events: []
     }
@@ -64,8 +65,7 @@ class Vendors extends React.Component {
 					{this.state.showTab === 'matched' ? <div> matched list</div> : null}
 				</div>
 			</div>
-
-		)
+    )
   }
 
 }

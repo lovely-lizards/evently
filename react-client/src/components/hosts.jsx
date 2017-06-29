@@ -2,6 +2,8 @@ import React from 'react';
 import utils from '../utils.js';
 import ReactDOM from 'react-dom';
 import CreateEvent from './CreateEvent.jsx';
+import CurrentEvents from './CurrentEvents.jsx';
+import PastEvents from './PastEvents.jsx';
 
 class Hosts extends React.Component {
   constructor(props) {
@@ -22,7 +24,7 @@ class Hosts extends React.Component {
 
     });
   }
-
+        
 	showTab(tab) {
 
     if (tab === 'current') {
@@ -51,6 +53,7 @@ class Hosts extends React.Component {
 					<button className="tablinks" onClick={()=>this.showTab('past')}>Past Events</button>
 				</div>
 				<div>
+
 					{this.state.showTab === 'current'
           ? <div>
               <div>{this.state.events.map(event =>
@@ -76,6 +79,7 @@ class Hosts extends React.Component {
             : null}
 					{this.state.showTab === 'create' ? <CreateEvent/> : null}
 					{this.state.showTab === 'past' ? <div> matched list</div> : null}
+
 				</div>
 			</div>
     )
