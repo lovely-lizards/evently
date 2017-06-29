@@ -265,8 +265,22 @@ Events.findOne({ location: '611 Mission St #2, San Francisco, CA 94105' }, funct
   }
 });
 
+var vendorSchema = mongoose.Schema({
+  id: {type: Number, unique: true, index: true},
+  organization: String,
+  service: mongoose.Schema.Types.Mixed,
+  location: String,
+  description: String
+});
+
+
+
+var Vendors = mongoose.model('Vendors', vendorSchema);
+
+
 module.exports.Users = Users;
 module.exports.Events = Events;
+module.exports.Vendors = Vendors;
 
 
 /*
