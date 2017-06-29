@@ -24,10 +24,8 @@ passport.serializeUser(function(user, cb) {
 });
 
 passport.deserializeUser(function(id, cb) {
-
   db.Users.find({id : id}, function(err, user){
      if(err) cb(err);
-        console.log('FOUND USER ==>', user);
         cb(null, user[0]);
      });
 });
@@ -43,51 +41,19 @@ app.use(require('express-session')({ secret: 'keyboard cat', resave: true, saveU
 app.use(passport.initialize());
 app.use(passport.session());
 
-// Server Log Middleware
-app.use(function(req, res, next) {
-  console.log(`${req.method} ${req.url} ${new Date()}`);
-  next();
-});
-
-//Test Routes for FB Auth
-
 app.get('/main', function(req, res) {
-  res.sendFile(path.resolve(__dirname + '/../react-client/dist/index.html'));
-});
+  // If user is logged in, allow access to main else redirect to login page
+  if (req.user) {
+    res.sendFile(path.resolve(__dirname + '/../react-client/dist/index.html'));
+  } else {
+    res.redirect('/');
+  }
 
-app.get('/failed', function(req, res) {
-  console.log('FB AUTH FAILED');
-  res.send('FB AUTH FAILED')
-});
-
-app.get('/user', function(req, res, next) {
-
-    res.send(req.user);
 });
 
 //===============
 // API GET ROUTES
 //===============
-
-app.get('/api/vendors', function(req, res) {
-
-  db.Vendors.find( (err, vendors) => {
-
-    res.send(vendors);
-
-  });
-
-});
-
-app.get('/api/hosts', function(req, res) {
-
-  db.Hosts.find( (err, hosts) => {
-
-    res.send(hosts);
-
-  });
-
-});
 
 app.get('/api/events', function(req, res) {
 
@@ -100,8 +66,6 @@ app.get('/api/events', function(req, res) {
 });
 
 app.get('/api/events/user', function(req, res) {
-
-  console.log(req.user.id);
 
   db.Events.find({userid: req.user.id}, (err, events) => {
 
@@ -135,11 +99,7 @@ app.post('/api/events', function(req, res) {
     if(err) {
       console.log(err);
     }
-
-    console.log('EVENT CREATED ====>', event);
-
   });
-
   res.end();
 });
 
@@ -162,7 +122,7 @@ app.put('/api/events/:id', function(req, res) {
 app.get('/auth/facebook', passport.authenticate('facebook'));
 
 app.get('/auth/facebook/callback',
-  passport.authenticate('facebook', { failureRedirect: '/failed' }),
+  passport.authenticate('facebook', { failureRedirect: '/' }),
   function(req, res) {
     console.log('INSIDE APP.GET PASSPORT');
     // Successful authentication, redirect home.
