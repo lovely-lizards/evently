@@ -34,8 +34,13 @@ class Login extends React.Component {
       <div className="container">
         {        
           this.state.path !== '/main' ? 
-            <div>
-              <h1>Evently Login</h1>
+           <div className="jumbotron">
+              <h1 className="display-3">Evently</h1>
+              <p className="lead">
+              Simplify hosting events by connecting vendors to the host to eliminate the logistical needs
+              </p>
+
+              <p>Login in and get started</p>
               <form action="/auth/facebook">
                 <button type="submit" className="btn btn-primary containerCenter">Login</button>              
               </form>
