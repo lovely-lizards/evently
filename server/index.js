@@ -65,6 +65,21 @@ app.get('/api/events', function(req, res) {
 
 });
 
+app.get('/api/user', function(req, res) {
+
+  db.Users.find({id: req.user.id}, function(err, user){
+
+    if (err) {
+      console.log(err);
+    }
+
+    var data = {id: req.user.id}
+    res.send(data);
+
+  });
+
+});
+
 app.get('/api/events/user', function(req, res) {
 
   db.Events.find({userid: req.user.id}, (err, events) => {
