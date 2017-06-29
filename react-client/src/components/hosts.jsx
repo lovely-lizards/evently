@@ -15,7 +15,23 @@ class Hosts extends React.Component {
   }
 
   componentDidMount() {
-
+		var that = this;
+		var currentData = [];
+		var pastData = [];
+		this.state.data.forEach(function(data) {
+			console.log('event date', new Date(data.date))
+			console.log('current date', new Date());
+			console.log(new Date(data.date) > new Date());
+			if (new Date(data.date) > new Date()) {
+				currentData.push(data);
+			} else {
+				pastData.push(data);
+			}
+		});
+		this.setState({
+			current: currentData,
+			past: pastData
+		});
     utils.getEventsByUser(data => {
 
       this.setState({
@@ -24,6 +40,56 @@ class Hosts extends React.Component {
 
     });
   }
+		// 		data: [{	
+		// 		userid: 10158962670505581,
+		// 		needs: {
+		// 			food: {
+		// 				budget: 200,
+		// 				Chinese: true,
+		// 				Japanese: true,
+		// 			},
+		// 			music: {
+		// 				budget: 300,
+		// 				edm: true,
+		// 				Rock: true,
+		// 			},
+		// 			photography: {
+		// 				budget: 300,
+		// 				events: true
+		// 			}
+		// 		},
+		// 		title: 'Corgi Meetup',
+		// 		location: '611 Mission St #2, San Francisco, CA 94105',
+		// 		date: '2018-11-15',
+		// 		note: 'vegan prease',
+		// 		vendors: []
+		// 	},
+		// 	{	
+		// 		userid: 10158962670505581,
+		// 		needs: {
+		// 			food: {
+		// 				budget: 4000,
+		// 				Mexican: true,
+		// 			},
+		// 			music: {
+		// 				budget: 2000,
+		// 				edm: true,
+		// 				Rock: true,
+		// 			},
+		// 			photography: {
+		// 				budget: 3,
+		// 				events: true
+		// 			}
+		// 		},
+		// 		title: 'Kill All Humans After Party',
+		// 		location: 'Planet Earth',
+		// 		date: '2012-12-12',
+		// 		note: 'no humans allowed',
+		// 		vendors: []
+		// 	}],
+		// 	current:[],
+		// 	past:[],
+    // }
         
 	showTab(tab) {
 
