@@ -100,6 +100,18 @@ app.get('/api/events/:id', function(req, res ) {
 
 });
 
+app.get('/api/vendors/:id', function(req, res) {
+
+  console.log(req.params.id);
+
+  db.Vendors.findOne({id: req.params.id}, (err, vendor) => {
+
+    res.end(vendor);
+
+  })
+
+});
+
 //================
 // API POST ROUTES
 //================
@@ -118,6 +130,19 @@ app.post('/api/events', function(req, res) {
   res.end();
 });
 
+app.post('/api/vendors', function(req, res) {
+
+  var vendor = req.body;
+
+  vendor.userid = req.user.id;
+
+  db.Vendors.create(vendor, function(err, vendor) {
+    if(err) {
+      console.log(err);
+    }
+  });
+  res.end();
+});
 //================
 // API PUT ROUTES
 //================
