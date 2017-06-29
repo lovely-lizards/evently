@@ -1,6 +1,7 @@
 import React from 'react';
 import utils from '../utils.js';
 import ReactDOM from 'react-dom';
+import VendorSignUp from './VendorSignUp.jsx';
 
 class Vendors extends React.Component {
   constructor(props) {
@@ -34,10 +35,12 @@ class Vendors extends React.Component {
     return (
 			<div>
 				<div className="tab">
+          <button className="tabLinks" onClick={()=>this.showTab('signup')}>Vendor Sign Up</button>
 					<button className="tablinks" onClick={()=>this.showTab('upcoming')}>Upcoming Events</button>
 					<button className="tablinks" onClick={()=>this.showTab('bidded')}>Bidded Events</button>
 					<button className="tablinks" onClick={()=>this.showTab('matched')}>Matched Events</button>
 				</div>
+        {this.state.showTab === 'signup' ? <VendorSignUp/> : null}
 				<div>
 					{this.state.showTab === 'upcoming'
           ? <div>

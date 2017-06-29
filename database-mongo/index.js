@@ -17,7 +17,7 @@ db.once('open', function() {
 /* -----------------------Users----------------------- */
 
 var userSchema = mongoose.Schema({
-  id: {type: Number, unique: true},
+  id: {type: Number, unique: true, index: true},
   name: String,
   host: mongoose.Schema.Types.Mixed,
   vends: mongoose.Schema.Types.Mixed
