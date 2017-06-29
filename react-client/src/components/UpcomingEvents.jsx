@@ -1,20 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-class CurrentEvents extends React.Component {
+class UpcomingEvents extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-		}
-	}
 
-	render() {
-		return (
-			<div>
+    }
+  }
+  
+  
+  render() {
+    return (
+      <div>
 				<div>{this.props.events.map(event =>
 					<div className="card">
 						<div className="card-block">
-							<h4 className="card-title font-weight-bold text-primary">Title Goes Here</h4>
+							<h4 className="card-title font-weight-bold text-success">Title Goes Here</h4>
 							<h6 className="card-subtitle mb-2 text-muted">Date: {event.date}</h6>
 							<h6 className="card-subtitle mb-2 text-muted">Location: {event.location}</h6>
 							<div>
@@ -39,9 +41,10 @@ class CurrentEvents extends React.Component {
 				)}
 				</div>
 			</div>
-		);
-	}
+
+    )
+  }
+
 }
 
-export default CurrentEvents
-
+export default UpcomingEvents

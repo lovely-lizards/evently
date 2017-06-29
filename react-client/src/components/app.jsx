@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 import $ from 'jquery';
-import Hosts from './hosts.jsx';
-import Vendors from './vendors.jsx';
+import Hosts from './Hosts.jsx';
+import Vendors from './Vendors.jsx';
 
 class App extends React.Component {
   constructor(props) {

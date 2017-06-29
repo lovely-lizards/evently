@@ -2,6 +2,7 @@ import React from 'react';
 import utils from '../utils.js';
 import ReactDOM from 'react-dom';
 import VendorSignUp from './VendorSignUp.jsx';
+import UpcomingEvents from './UpcomingEvents.jsx';
 
 class Vendors extends React.Component {
   constructor(props) {
@@ -42,28 +43,7 @@ class Vendors extends React.Component {
 				</div>
         {this.state.showTab === 'signup' ? <VendorSignUp/> : null}
 				<div>
-					{this.state.showTab === 'upcoming'
-          ? <div>
-              <div>{this.state.events.map(event =>
-                      <div>
-                        <div>{event.date}</div>
-                        <div>{event.location}</div>
-                        <div>Needs: {Object.keys(event.needs).map(need =>
-                                <div>
-                                  <div>{need}</div>
-                                  <div>
-                                    {Object.keys(event.needs[need]).map(item =>
-                                      <li>{item === 'budget' ? 'Budget: ' + event.needs[need].budget: item}</li>
-                                    )}
-                                  </div>
-                                </div>
-                             )}
-                        </div>
-                      </div>
-                   )}
-              </div>
-            </div>
-          : null}
+					{this.state.showTab === 'upcoming' ? <UpcomingEvents events={this.state.events}/> : null}
 					{this.state.showTab === 'bidded' ? <div>bidded list</div> : null}
 					{this.state.showTab === 'matched' ? <div> matched list</div> : null}
 				</div>
