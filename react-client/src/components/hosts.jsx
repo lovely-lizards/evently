@@ -1,4 +1,5 @@
 import React from 'react';
+import utils from '../utils.js';
 import ReactDOM from 'react-dom';
 import CreateEvent from './CreateEvent.jsx';
 import CurrentEvents from './CurrentEvents.jsx';
@@ -8,100 +9,87 @@ class Hosts extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-			data: [{	
-				userid: 10158962670505581,
-				needs: {
-					food: {
-						budget: 200,
-						Chinese: true,
-						Japanese: true,
-					},
-					music: {
-						budget: 300,
-						edm: true,
-						Rock: true,
-					},
-					photography: {
-						budget: 300,
-						events: true
-					}
-				},
-				title: 'Corgi Meetup',
-				location: '611 Mission St #2, San Francisco, CA 94105',
-				date: '2018-11-15',
-				note: 'vegan prease',
-				vendors: []
-			},
-			{	
-				userid: 10158962670505581,
-				needs: {
-					food: {
-						budget: 4000,
-						Mexican: true,
-					},
-					music: {
-						budget: 2000,
-						edm: true,
-						Rock: true,
-					},
-					photography: {
-						budget: 3,
-						events: true
-					}
-				},
-				title: 'Kill All Humans After Party',
-				location: 'Planet Earth',
-				date: '2012-12-12',
-				note: 'no humans allowed',
-				vendors: []
-			}],
-			current:[],
-			past:[],
+      showTab: 'current',
+      events: []
     }
   }
 
-	componentDidMount() {
-		var that = this;
-		var currentData = [];
-		var pastData = [];
-		this.state.data.forEach(function(data) {
-			console.log('event date', new Date(data.date))
-			console.log('current date', new Date());
-			console.log(new Date(data.date) > new Date());
-			if (new Date(data.date) > new Date()) {
-				currentData.push(data);
-			} else {
-				pastData.push(data);
-			}
-		});
-		this.setState({
-			current: currentData,
-			past: pastData
-		})
-	}
-  
+  componentDidMount() {
+
+    utils.getEventsByUser(data => {
+
+      this.setState({
+        events: data
+      });
+
+    });
+  }
+        
 	showTab(tab) {
-		this.setState({
-			showTab: tab
-		});
+
+    if (tab === 'current') {
+      utils.getEventsByUser(data => {
+
+        this.setState({
+          events: data,
+          showTab: tab
+        });
+
+      });
+    } else {
+  		this.setState({
+  			showTab: tab
+  		});
+    }
 	}
-	
+
 
   render() {
     return (
-			<div> 
+			<div>
 				<div className="tab">
 					<button className="tablinks" onClick={()=>this.showTab('create')}>Create Event</button>
 					<button className="tablinks" onClick={()=>this.showTab('current')}>Current Events</button>
 					<button className="tablinks" onClick={()=>this.showTab('past')}>Past Events</button>
 				</div>
 				<div>
-					{this.state.showTab === 'create' ? <CreateEvent /> : null}
-					{this.state.showTab === 'current' ? <CurrentEvents list={this.state.current}/> : null}
-					{this.state.showTab === 'past' ? <PastEvents list={this.state.past} /> : null}
+
+					{this.state.showTab === 'current'
+          ? <div>
+              <div>{this.state.events.map(event =>
+                      <div>
+                        <div>{event.date}</div>
+                        <div>{event.location}</div>
+                        <div>Needs: {Object.keys(event.needs).map(need =>
+                                <div>
+                                  <div>{need}</div>
+                                  <div>
+                                    {Object.keys(event.needs[need]).map(item =>
+                                      <li>{item === 'budget' ? 'Budget: ' + event.needs[need].budget: item}</li>
+                                    )}
+                                  </div>
+                                </div>
+                             )}
+                        </div>
+                      </div>
+                   )}
+              </div>
+            </div>
+
+            : null}
+					{this.state.showTab === 'create' ? <CreateEvent/> : null}
+					{this.state.showTab === 'past' ? <div> matched list</div> : null}
+
 				</div>
 			</div>
     )
   }
 }
 export default Hosts;
+
+/*
+Object {_id: "595448108ff4913f5cad4c27", userid: 10158962670505580, needs: Object, location: "944 Market St, San Francisco, CA", date: "1856527"…}
+hosts.jsx?102c:46 Object {_id: "595448108ff4913f5cad4c28", userid: 10158962670505580, needs: Object, location: "611 Mission St #2, San Francisco, CA 94105", date: "7082017"…}
+hosts.jsx?102c:46 Object {_id: "5954482a8ff4913f5cad4c2a", needs: Object, location: "522 asd", date: "2017-06-22", userid: 10158962670505580…}
+hosts.jsx?102c:46 Object {_id: "5954652c48b1bf3fc39993fb", needs: Object, location: "123 asdas", date: "2017-06-21", userid: 10158962670505580…}
+*/

@@ -20,7 +20,6 @@ passport.use(new FacebookStrategy({
 ));
 
 passport.serializeUser(function(user, cb) {
-  console.log('SERIALIZE USER =====>', user[0].id);
   cb(null, user[0].id);
 });
 
@@ -33,13 +32,11 @@ passport.deserializeUser(function(id, cb) {
      });
 });
 
-
 var app = express();
 app.use( express.static(__dirname + '/../react-client/dist') );
 app.use(require('cookie-parser')());
 app.use( bodyParser.urlencoded({ extended: true }) );
 app.use(require('express-session')({ secret: 'keyboard cat', resave: true, saveUninitialized: false }));
-
 
 // Initialize Passport and restore authentication state, if any, from the
 // session.
@@ -102,6 +99,17 @@ app.get('/api/events', function(req, res) {
 
 });
 
+app.get('/api/events/user', function(req, res) {
+
+  console.log(req.user.id);
+
+  db.Events.find({userid: req.user.id}, (err, events) => {
+
+    res.send(events)
+
+  });
+});
+
 
 app.get('/api/events/:id', function(req, res ) {
 
@@ -119,49 +127,9 @@ app.get('/api/events/:id', function(req, res ) {
 
 app.post('/api/events', function(req, res) {
 
-  /*
-  userid: 100576853912922,
-  needs: {
-    food: {
-      budget: 200,
-      chinese: true
-    },
-    music: {
-      budget: 300,
-      edm: true
-    },
-    photography: {
-      budget: 300,
-      events: true
-    }
-  },
-  location: '611 Mission St #2, San Francisco, CA 94105',
-  date: 07102017,
-  vendors: []
-  */
-
-  /*
-  { needs: {
-      food: {
-        budget: '123123',
-        Japanese: 'true'
-    },
-     music: { budget: '123123', House: 'true' },
-     photography: { budget: '0', House: 'true', Wedding: 'true' } },
-  location: '944 market',
-  date: '2017-06-22',
-  notes: 'Something' }
-
-
-  */
-
-  console.log('WHAT TYPE IS THIS ===>>', typeof req.user.id)
-
   var event = req.body;
 
   event.userid = req.user.id;
-
-  console.log(event);
 
   db.Events.create(event, function(err, event) {
     if(err) {

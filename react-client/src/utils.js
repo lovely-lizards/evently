@@ -14,16 +14,26 @@ module.exports = {
 
   },
 
-  createEvent: function(data, cb) {
+  createEvent: function(data) {
     $.ajax({
       url: 'api/events',
       method: 'POST',
       data: data,
       success: function() {
         console.log('Event has been posted! -> utils.createEvent')
-        cb();
       }
-    })
+    });
+  },
+
+  getEventsByUser: function(cb) {
+
+    $.ajax({
+      url: '/api/events/user',
+      method: 'GET',
+      success: function(data) {
+        cb(data);
+      }
+    });
   }
 
 }
