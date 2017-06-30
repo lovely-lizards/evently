@@ -20,15 +20,16 @@
 
 ## Usage
 
-> Some usage instructions
+npm run react-dev
+npm run server-dev
+npm run db-start
+
+Must log into facebook to get authenticated
 
 ## Requirements
 
-- Node 6.4.x
-- Redis 2.6.x
-- Postgresql 9.1.x
-- etc
-- etc
+- Node
+- MongoDB
 
 ## Development
 
@@ -37,9 +38,7 @@
 From within the root directory:
 
 ```sh
-npm install -g bower
 npm install
-bower install
 ```
 
 ### Roadmap
