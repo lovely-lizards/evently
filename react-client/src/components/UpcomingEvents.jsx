@@ -16,7 +16,7 @@ class UpcomingEvents extends React.Component {
 				<div>{this.props.events.map(event =>
 					<div className="card">
 						<div className="card-block">
-							<h4 className="card-title font-weight-bold text-success">Title Goes Here</h4>
+							<h4 className="card-title font-weight-bold text-success">{event.title}</h4>
 							<h6 className="card-subtitle mb-2 text-muted">Date: {event.date}</h6>
 							<h6 className="card-subtitle mb-2 text-muted">Location: {event.location}</h6>
 							<div>
