@@ -124,27 +124,6 @@ class CreateEvent extends React.Component {
 		console.log(this.state.title);
 	}
 
-	// userid: 10158962670505581,
-  // needs: {
-  //   food: {
-  //     budget: 200,
-  //     Chinese: true,
-	//		 Japanese: true,
-  //   },
-  //   music: {
-  //     budget: 300,
-  //     edm: true,
-	//     Rock: true,
-  //   },
-  //   photography: {
-  //     budget: 300,
-  //     events: true
-  //   }
-  // },
-  // location: '611 Mission St #2, San Francisco, CA 94105',
-  // date: '2017-06-27',
-	// note: 'vegas prease',
-  // vendors: []
 
 	submitData() {
 		var numberDate = new Date(this.state.date);

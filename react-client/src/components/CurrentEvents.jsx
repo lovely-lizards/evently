@@ -28,7 +28,3 @@ class CurrentEvents extends React.Component {
 }
 
 export default CurrentEvents
-
-/*
-
- */
