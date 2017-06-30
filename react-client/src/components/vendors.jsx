@@ -11,19 +11,23 @@ class Vendors extends React.Component {
     this.state = {
 
       showTab: 'upcoming',
-      events: []
+      events: [],
+      userId: ''
     }
   }
 
   componentDidMount() {
-
+    var that = this
+    utils.getUserId(data => {
+      this.setState({userId: data});
+    });
     utils.getEvents(data => {
-
       this.setState({
         events: data
       });
-
     });
+    console.log(this.state.userId);
+    console.log(this.state.events);
   }
 
 	showTab(tab) {
@@ -62,7 +66,7 @@ class Vendors extends React.Component {
 				
         	{this.state.showTab === 'upcoming' ? <UpcomingEvents events={this.state.events}/> : null}
 					{this.state.showTab === 'bidded' ? <div>bidded list</div> : null}
-					{this.state.showTab === 'matched' ? <MatchedList/> : null}
+					{this.state.showTab === 'matched' ? <MatchedList list={this.state.events} user={this.state.userId}/> : null}
 				</div>
 			</div>
     )

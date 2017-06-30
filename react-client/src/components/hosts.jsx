@@ -10,34 +10,32 @@ class Hosts extends React.Component {
     super(props);
     this.state = {
       showTab: 'current',
-      events: []
+      events: [],
+			data: [0],
     }
   }
 
   componentDidMount() {
 		var that = this;
-		var currentData = [];
-		var pastData = [];
-		this.state.data.forEach(function(data) {
-			console.log('event date', new Date(data.date))
-			console.log('current date', new Date());
-			console.log(new Date(data.date) > new Date());
-			if (new Date(data.date) > new Date()) {
-				currentData.push(data);
-			} else {
-				pastData.push(data);
-			}
-		});
-		this.setState({
-			current: currentData,
-			past: pastData
-		});
     utils.getEventsByUser(data => {
-
-      this.setState({
-        events: data
-      });
-
+			var currentData = [];
+			var pastData = [];
+			console.log(data);
+			data.forEach(function(data) {
+				console.log(data);
+				console.log('event date', new Date(data.date))
+				console.log('current date', new Date());
+				console.log(new Date(data.date) > new Date());
+				if (new Date(data.date) > new Date()) {
+					currentData.push(data);
+				} else {
+					pastData.push(data);
+				}
+				that.setState({
+					current: currentData,
+					past: pastData
+				});
+			});
     });
   }
 		// 		data: [{	
