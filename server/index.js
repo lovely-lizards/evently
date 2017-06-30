@@ -47,11 +47,9 @@ app.use( express.static(__dirname + '/../react-client/dist') );
 app.use(require('cookie-parser')());
 app.use( bodyParser.urlencoded({ extended: true }) );
 app.use(require('express-session')({ secret: 'keyboard cat', resave: true, saveUninitialized: false }));
-
-// Initialize Passport and restore authentication state, if any, from the
-// session.
 app.use(passport.initialize());
 app.use(passport.session());
+
 
 app.get('/main', function(req, res) {
   // If user is logged in, allow access to main else redirect to login page
@@ -62,10 +60,6 @@ app.get('/main', function(req, res) {
   }
 
 });
-
-//===============
-// API GET ROUTES
-//===============
 
 app.get('/api/events', function(req, res) {
 
@@ -78,7 +72,7 @@ app.get('/api/events', function(req, res) {
 });
 
 app.get('/api/user', function(req, res) {
-
+  // We made this route to get the current users' ID to use in the front end. 
   db.Users.find({id: req.user.id}, function(err, user){
 
     if (err) {
@@ -114,8 +108,6 @@ app.get('/api/events/:id', function(req, res ) {
 
 app.get('/api/vendors/:id', function(req, res) {
 
-  console.log(req.params.id);
-
   db.Vendors.findOne({id: req.params.id}, (err, vendor) => {
 
     res.send(vendor);
@@ -138,8 +130,8 @@ app.post('/api/events', function(req, res) {
     if(err) {
       console.log(err);
     }
+    res.end();
   });
-  res.end();
 });
 
 app.post('/api/vendors', function(req, res) {
@@ -152,8 +144,8 @@ app.post('/api/vendors', function(req, res) {
     if(err) {
       console.log(err);
     }
+    res.end();
   });
-  res.end();
 });
 //================
 // API PUT ROUTES
@@ -175,9 +167,8 @@ app.get('/auth/facebook', passport.authenticate('facebook'));
 
 app.get('/auth/facebook/callback',
   passport.authenticate('facebook', { failureRedirect: '/' }),
+  
   function(req, res) {
-    console.log('INSIDE APP.GET PASSPORT');
-    // Successful authentication, redirect home.
     res.redirect('/main');
   });
 
