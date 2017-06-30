@@ -9,7 +9,6 @@ class Hosts extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      showTab: 'current',
       events: [],
 			data: [0],
     }
@@ -129,9 +128,9 @@ class Hosts extends React.Component {
 
 				<div>
 
-					{this.state.showTab === 'current' ? <CurrentEvents events={this.state.events}/> : null}
+					{this.state.showTab === 'current' ? <CurrentEvents events={this.state.current}/> : null}
 					{this.state.showTab === 'create' ? <CreateEvent/> : null}
-					{this.state.showTab === 'past' ? <div> matched list</div> : null}
+					{this.state.showTab === 'past' ? <PastEvents events={this.state.past} /> : null}
 
 				</div>
 			</div>

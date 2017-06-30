@@ -13,45 +13,47 @@ class MatchedList extends React.Component {
 
 	componentDidMount() {
 		var filteredData = [];
-		console.log(this.props.user.id);
-		utils.getVendorsById(this.props.user.id, (data) => {
-			var foodService = Object.keys(data.service.food);
-			var musicService = Object.keys(data.service.music);
-			var photoService = Object.keys(data.service.photography);
-			
-			this.props.list.forEach((event) => {
-				for (var i = 0; i < foodService.length; i++) {
-					if (event.needs.food.hasOwnProperty(foodService[i])) {
-						filteredData.push(event);
+		this.props.list.forEach((event) => {
+			var isMatch = false
+			this.props.service.forEach((service) => {
+				service.forEach((type) => {
+					console.log(type);
+					if (event.needs.food.hasOwnProperty(type)) {
+						isMatch = true;
 					}
-				}
-			})
+					if (event.needs.music.hasOwnProperty(type)) {
+						isMatch = true;
+					}
+					if (event.needs.photography.hasOwnProperty(type)){
+						isMatch = true;
+					};
+				});
+			});
+			if (isMatch) {
+				filteredData.push(event);
+			}
 		});
-		console.log(filteredData);
-		// var foodService = Object.keys(obj.service.food);
-		// var musicService = Object.keys(obj.service.music);
-		// var photoService = Object.keys(obj.service.photography);
-		console.log(this.props);
-		// if (host.needs.food.hasOwnProperty(obj.service.food))
-		// utils.getEvents(hostData => {
-		// 	utils.getVendor(vendorData => {
-
-		// 	})
-		// })
-		// if ()
-
+		this.setState({
+			data: filteredData
+		});
 	}
+		// console.log(filteredData);
+		// // var foodService = Object.keys(obj.service.food);
+		// // var musicService = Object.keys(obj.service.music);
+		// // var photoService = Object.keys(obj.service.photography);
+		// console.log(this.props);
+
 
 	render() {
 		return (
 			<div className='matched-events'>
-				{/*{this.data.map(function(data, key) {
+				{this.state.data.map(function(data, key) {
 					return (
 					<div className='events' key={key}>
 						<div>{data.title}</div>
 						<div>{data.date}</div>
 						<div>{data.location}</div>
-					</div> )*/}
+					</div> )
 				})}
 			</div>
 		)

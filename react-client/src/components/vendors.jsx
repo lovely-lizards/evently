@@ -12,15 +12,26 @@ class Vendors extends React.Component {
 
       showTab: 'upcoming',
       events: [],
-      userId: ''
+      userId: '',
+      serviceData: []
     }
   }
 
   componentDidMount() {
     var that = this
-    utils.getUserId(data => {
-      this.setState({userId: data});
-    });
+    utils.getUserId((id) => {
+      console.log(id);
+      utils.getVendorsById(id.id , (data) => {
+        console.log(data);
+        var foodService = Object.keys(data.service.food);
+        var musicService = Object.keys(data.service.music);
+        var photoService = Object.keys(data.service.photography); 
+        that.setState({
+          serviceData: [foodService, musicService, photoService]
+        });
+		  });
+      this.setState({userId: id});
+    })
     utils.getEvents(data => {
       this.setState({
         events: data
@@ -28,6 +39,7 @@ class Vendors extends React.Component {
     });
     console.log(this.state.userId);
     console.log(this.state.events);
+    console.log(this.state.data);
   }
 
 	showTab(tab) {
@@ -66,7 +78,7 @@ class Vendors extends React.Component {
 				
         	{this.state.showTab === 'upcoming' ? <UpcomingEvents events={this.state.events}/> : null}
 					{this.state.showTab === 'bidded' ? <div>bidded list</div> : null}
-					{this.state.showTab === 'matched' ? <MatchedList list={this.state.events} user={this.state.userId}/> : null}
+					{this.state.showTab === 'matched' ? <MatchedList list={this.state.events} user={this.state.userId} service={this.state.serviceData}/> : null}
 				</div>
 			</div>
     )

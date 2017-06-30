@@ -43,21 +43,21 @@ var eventsSchema = mongoose.Schema({
 var Events = mongoose.model('Events', eventsSchema);
 
 var jasperYu07052017 = new Events ({
+  title: 'Jaspers dogs birthday',
   userid: 10158962670505581,
   needs: {
     food: {
       budget: 200,
-      comfort: true,
-      japanse: true,
-      chinese: true
+      Japanese: true,
+      Chinese: true
     },
     music: {
       budget: 300,
-      edm: true
+      Classical: true
     },
     photography: {
-      budget: 300,
-      events: true
+      budget: 300,  
+      Events: true
     }
   },
   location: '944 Market St, San Francisco, CA',
@@ -79,6 +79,7 @@ Events.findOne({ location: '944 Market St, San Francisco, CA' }, function (err, 
 });
 
 var peterTan07082017 = new Events ({
+  title: 'peters first child',
   userid: 10158962670505581,
   needs: {
     food: {
@@ -87,7 +88,7 @@ var peterTan07082017 = new Events ({
     },
     music: {
       budget: 300,
-      edm: true
+      Rock: true
     },
     photography: {
       budget: 300,
@@ -115,15 +116,16 @@ Events.findOne({ location: '611 Mission St #2, San Francisco, CA 94105' }, funct
 
 
 var ryanPlaton07102017 = new Events ({
+  title: 'ryan finds new meaning to life',
   userid: 100576853912922,
   needs: {
     food: {
       budget: 200,
-      chinese: true
+      Chinese: true
     },
     music: {
       budget: 300,
-      edm: true
+      Country: true
     },
     photography: {
       budget: 300,
