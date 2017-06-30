@@ -21,10 +21,10 @@ class Hosts extends React.Component {
 			var pastData = [];
 			console.log(data);
 			data.forEach(function(data) {
-				console.log(data);
-				console.log('event date', new Date(data.date))
-				console.log('current date', new Date());
-				console.log(new Date(data.date) > new Date());
+				// console.log(data);
+				// console.log('event date', new Date(data.date))
+				// console.log('current date', new Date());
+				// console.log(new Date(data.date) > new Date());
 				if (new Date(data.date) > new Date()) {
 					currentData.push(data);
 				} else {
