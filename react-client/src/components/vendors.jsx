@@ -35,18 +35,35 @@ class Vendors extends React.Component {
   render() {
     return (
 			<div>
-				<div className="tab">
-          <button className="tabLinks" onClick={()=>this.showTab('signup')}>Vendor Sign Up</button>
-					<button className="tablinks" onClick={()=>this.showTab('upcoming')}>Upcoming Events</button>
-					<button className="tablinks" onClick={()=>this.showTab('bidded')}>Bidded Events</button>
-					<button className="tablinks" onClick={()=>this.showTab('matched')}>Matched Events</button>
-				</div>
+        <div className="container">
+        
+          <ul className="nav nav-tabs">
+
+            <li className='nav-item'>
+              <a className={'nav-link '.concat(this.state.showTab === 'signup' ? 'active' : null)} onClick={()=>this.showTab('signup')} href='#'>Vender Sign Up</a>
+            </li>
+            <li className='nav-item'>
+              <a className={'nav-link '.concat(this.state.showTab === 'upcoming' ? 'active' : null)} onClick={()=>this.showTab('upcoming')} href='#'>Upcoming Events</a>
+            </li>
+            <li className='nav-item'>
+              <a className={'nav-link '.concat(this.state.showTab === 'bidded' ? 'active' : null)} onClick={()=>this.showTab('bidded')} href='#'>Bidded Events</a>
+            </li>
+            <li className='nav-item'>
+              <a className={'nav-link '.concat(this.state.showTab === 'matched' ? 'active' : null)} onClick={()=>this.showTab('matched')} href='#'>Matched Events</a>
+            </li>
+
+          </ul>
+        </div>
+        
         {this.state.showTab === 'signup' ? <VendorSignUp/> : null}
-				<div>
-					{this.state.showTab === 'upcoming' ? <UpcomingEvents events={this.state.events}/> : null}
+				
+        <div>
+				
+        	{this.state.showTab === 'upcoming' ? <UpcomingEvents events={this.state.events}/> : null}
 					{this.state.showTab === 'bidded' ? <div>bidded list</div> : null}
 					{this.state.showTab === 'matched' ? <div> matched list</div> : null}
-				</div>
+				
+        </div>
 			</div>
     )
   }
