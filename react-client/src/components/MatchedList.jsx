@@ -45,13 +45,13 @@ class MatchedList extends React.Component {
 	render() {
 		return (
 			<div className='matched-events'>
-				{this.data.map(function(data, key) {
+				{/*{this.data.map(function(data, key) {
 					return (
 					<div className='events' key={key}>
 						<div>{data.title}</div>
 						<div>{data.date}</div>
 						<div>{data.location}</div>
-					</div> )
+					</div> )*/}
 				})}
 			</div>
 		)
