@@ -1,9 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
-// import Hosts from './components/hosts.jsx';
-// import Vendors from './components/vendors.jsx';
-// import Landing from './components/landing.jsx';
+
 import App from './components/App.jsx';
 
 class Login extends React.Component {
@@ -12,21 +10,6 @@ class Login extends React.Component {
     this.state = { 
       path: window.location.pathname
     };
-  }
-
-  // loginClick() {
-  //   console.log('INSIDE LOGIN CLICK')
-  //   // $.ajax({
-  //   //   url: '/auth/facebook',
-  //   //   method: 'GET',
-  //   //   success: function(results) {
-  //   //     console.log('INSIDE SUCCESS OF LOGINCLICK')
-  //   //   }
-  //   // });
-  // }
-
-  componentDidMount() {
-
   }
 
   render () {
@@ -53,7 +36,3 @@ class Login extends React.Component {
 }
 
 ReactDOM.render(<Login />, document.getElementById('evently'));
-
-
-// <span className={this.state.view === 'vendor' ? 'nav-selected' : 'nav-unselected'}
-// onClick={() => this.changeView('vendor')}>
