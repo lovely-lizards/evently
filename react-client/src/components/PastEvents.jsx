@@ -11,7 +11,7 @@ class PastEvents extends React.Component {
 	render() {
 		return (
 			<div className='current-events'>
-				{this.props.list.map(function(data, key) {
+				{this.props.events.map(function(data, key) {
 					return (
 					<div className='events' key={key}>
 						<div>{data.title}</div>
