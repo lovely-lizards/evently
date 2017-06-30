@@ -22,14 +22,19 @@ class App extends React.Component {
         {console.log(this.state.currentPage)}
         <div className="container">
           <h1>Evently</h1>
-          <span className={this.state.view === 'host' ? 'nav-selected' : 'nav-unselected'}
-          onClick={() => this.changeView('host')}>
-          Host
-          </span>
-          <span className={this.state.view === 'vendor' ? 'nav-selected' : 'nav-unselected'}
-          onClick={() => this.changeView('vendor')}>
-          Vendor
-          </span>
+          <div className="container">
+
+            <ul className="nav nav-pills">
+
+              <li role="presentation" className='nav-item'>
+                <a className={'nav-link '.concat(this.state.view === 'host' ? 'active' : null)} onClick={()=>this.changeView('host')} href='#'>Host</a>
+              </li>
+              <li role="presentation" className='nav-item'>
+                <a className={'nav-link '.concat(this.state.view === 'vendor' ? 'active' : null)} onClick={()=>this.changeView('vendor')} href='#'>Vendor</a>
+              </li>
+            </ul>  
+          
+          </div>
           <div>
             {this.state.currentPage === 'host' ? <Hosts/> : null}
             {this.state.currentPage === 'vendor' ? <Vendors/> : null}

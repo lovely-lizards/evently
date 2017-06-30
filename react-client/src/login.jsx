@@ -4,7 +4,7 @@ import $ from 'jquery';
 // import Hosts from './components/hosts.jsx';
 // import Vendors from './components/vendors.jsx';
 // import Landing from './components/landing.jsx';
-import App from './components/app.jsx';
+import App from './components/App.jsx';
 
 class Login extends React.Component {
   constructor(props) {
