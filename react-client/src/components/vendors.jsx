@@ -88,4 +88,3 @@ class Vendors extends React.Component {
 
 export default Vendors;
 
-//{_id, userid, needs, location, date, __v, vendors}
