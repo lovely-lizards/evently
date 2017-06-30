@@ -10,7 +10,6 @@ export default class ShowNeedsHost extends React.Component {
   }
 
 	toggleNeeds () {
-		// console.log('INSIDE TOGGLE NEEDS: ', e.target.value);
 		this.setState({
 			isHidden : !this.state.isHidden
 
@@ -28,7 +27,6 @@ export default class ShowNeedsHost extends React.Component {
           <div>
             <button onClick={this.toggleNeeds} className="font-weight-bold-italic">Needs: </button>
             {
-              // console.log('THIS IS THE IDX of SHOW', this.Event),
               this.state.isHidden === false ?  
               Object.keys(this.props.event.needs).map(need => 
                 <div className="container">
@@ -44,7 +42,6 @@ export default class ShowNeedsHost extends React.Component {
               ) : null
             }
           </div>
-
         </div>					
       </div>
     )
