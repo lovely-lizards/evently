@@ -13,20 +13,32 @@ passport.use(new FacebookStrategy({
   },
   function(accessToken, refreshToken, profile, cb) {
 
-    db.Users.find({ id: profile.id }, function (err, user) {
-      return cb(err, user);
+    db.Users.findOne({ id: profile.id }, function (err, user) {
+      if (user) {
+        return cb(err, user);
+      } else {
+        db.Users.create({
+          id: profile.id,
+          name: profile.displayName
+        }, (err, user) => {
+          if (err) {
+            console.log(err);
+          }
+          return(null, user);
+        });
+      }
     });
   }
 ));
 
 passport.serializeUser(function(user, cb) {
-  cb(null, user[0].id);
+  cb(null, user.id);
 });
 
 passport.deserializeUser(function(id, cb) {
   db.Users.find({id : id}, function(err, user){
      if(err) cb(err);
-        cb(null, user[0]);
+        cb(null, user);
      });
 });
 
