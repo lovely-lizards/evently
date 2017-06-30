@@ -75,7 +75,7 @@ class VendorSignUp extends React.Component {
   }
 
   organizationChange(e) {
-    this.setState({organzation: e.target.value})
+    this.setState({organization: e.target.value})
   }
 
   submitData() {
@@ -87,7 +87,7 @@ class VendorSignUp extends React.Component {
         photography: {},
       },
       location: this.state.address,
-      description: this.state.address
+      description: this.state.description
     }
 		if (this.state.foodPicks) {
 			this.state.foodPicks.forEach(function(foodType) {
@@ -107,6 +107,7 @@ class VendorSignUp extends React.Component {
 			});
 		}
     console.log(submitData);
+    utils.createVendor(submitData);
     alert('congrats! you are now a vendor!');
   }
 

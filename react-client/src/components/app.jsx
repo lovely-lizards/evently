@@ -3,6 +3,7 @@ import ReactDom from 'react-dom';
 import $ from 'jquery';
 import Hosts from './Hosts.jsx';
 import Vendors from './Vendors.jsx';
+import utils from '../utils.js';
 
 class App extends React.Component {
   constructor(props) {
@@ -11,6 +12,17 @@ class App extends React.Component {
       currentPage: 'landing'
     }
   }
+
+  ComponentDidMount() {
+    console.log('hi');
+    var that = this
+    utils.getUserId( (data) => 
+      console.log(data)
+    )
+    console.log('hi');
+    console.log(this.state.userId);
+  }
+
   changeView(page) {
     this.setState({
       currentPage: page
@@ -36,8 +48,8 @@ class App extends React.Component {
           
           </div>
           <div>
-            {this.state.currentPage === 'host' ? <Hosts/> : null}
-            {this.state.currentPage === 'vendor' ? <Vendors/> : null}
+            {this.state.currentPage === 'host' ? <Hosts /> : null}
+            {this.state.currentPage === 'vendor' ? <Vendors user={this.state.userID}/> : null}
           </div>
         </div>
       </div>

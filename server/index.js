@@ -106,7 +106,7 @@ app.get('/api/vendors/:id', function(req, res) {
 
   db.Vendors.findOne({id: req.params.id}, (err, vendor) => {
 
-    res.end(vendor);
+    res.send(vendor);
 
   })
 
@@ -133,8 +133,8 @@ app.post('/api/events', function(req, res) {
 app.post('/api/vendors', function(req, res) {
 
   var vendor = req.body;
-
-  vendor.userid = req.user.id;
+  console.log(vendor);
+  vendor.id = req.user.id;
 
   db.Vendors.create(vendor, function(err, vendor) {
     if(err) {
