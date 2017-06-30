@@ -37,12 +37,6 @@ class MatchedList extends React.Component {
 			data: filteredData
 		});
 	}
-		// console.log(filteredData);
-		// // var foodService = Object.keys(obj.service.food);
-		// // var musicService = Object.keys(obj.service.music);
-		// // var photoService = Object.keys(obj.service.photography);
-		// console.log(this.props);
-
 
 	render() {
 		return (
