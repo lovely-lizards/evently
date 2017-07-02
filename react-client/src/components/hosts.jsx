@@ -9,8 +9,6 @@ class Hosts extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      events: [],
-			data: [0],
     }
   }
 
