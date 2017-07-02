@@ -8,6 +8,8 @@ class PastEvents extends React.Component {
 		}
 	}
 
+	
+
 	render() {
 		return (
 			<div className='current-events'>

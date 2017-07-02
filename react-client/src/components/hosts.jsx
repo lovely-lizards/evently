@@ -36,20 +36,9 @@ class Hosts extends React.Component {
         
 	showTab(tab) {
 
-    if (tab === 'current') {
-      utils.getEventsByUser(data => {
-
-        this.setState({
-          events: data,
-          showTab: tab
-        });
-
-      });
-    } else {
-  		this.setState({
+  this.setState({
   			showTab: tab
-  		});
-    }
+    })
 	}
 
 
@@ -74,7 +63,7 @@ class Hosts extends React.Component {
 
 				<div>
 
-					{this.state.showTab === 'current' ? <CurrentEvents events={this.state.current}/> : null}
+					{this.state.showTab === 'current' ? <CurrentEvents/> : null}
 					{this.state.showTab === 'create' ? <CreateEvent/> : null}
 					{this.state.showTab === 'past' ? <PastEvents events={this.state.past} /> : null}
 
