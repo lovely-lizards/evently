@@ -19,19 +19,19 @@ export default class ShowNeedsHost extends React.Component {
 
   render () {
     return (
-      <div className="card" key={this.props.idx}>
-        <div className="card-block">
-          <h4 className="card-title font-weight-bold text-primary">{this.props.event.title}</h4>
-          <h6 className="card-subtitle mb-2 text-muted">Date: {this.props.event.date}</h6>
-          <h6 className="card-subtitle mb-2 text-muted">Location: {this.props.event.location}</h6>
-          <div>
-            <button onClick={this.toggleNeeds} className="font-weight-bold-italic">Needs: </button>
+      <div className="ui card" key={this.props.idx}>
+        <div className="content">
+          <h4 className="header">{this.props.event.title}</h4>
+          <h6 className="meta">Date: {this.props.event.date}</h6>
+          <h6 className="meta">Location: {this.props.event.location}</h6>
+          <div className="description">
+            <button onClick={this.toggleNeeds} className="ui teal button">Needs: </button>
             {
               this.state.isHidden === false ?  
               Object.keys(this.props.event.needs).map(need => 
-                <div className="container">
-                  <div className="row">{need}</div>
-                  <div className="col-xl-2">
+                <div>
+                  <div>{need}</div>
+                  <div>
                     {
                       Object.keys(this.props.event.needs[need]).map(item => 
                         <li>{item === 'budget' ? 'Budget: ' + this.props.event.needs[need].budget: item}</li>

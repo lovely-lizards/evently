@@ -175,7 +175,7 @@ class CreateEvent extends React.Component {
 	render () {
 		return (
 			<div>
-				<div id='needs'>
+				<div id='needs fields'>
 					<div>Event Title</div> <input type="text" name="event-title" onChange={this.titleChange.bind(this)}/>
 					<div>Date of Event</div> <input type="date" name="event-date" onChange={this.dateChange.bind(this)}/>
 					<h1>Needs</h1>
