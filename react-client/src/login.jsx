@@ -71,9 +71,9 @@ class Login extends React.Component {
 
                     <div className="ui text container">
                       <h1 className="ui inverted header">
-                        Get things done..
+                        Get things done
                       </h1>
-                      <h2>Do whatever you want when you want to.</h2>
+                      <h2>Do whatever you want, when you want to.</h2>
                       <form action="/auth/facebook">
                       <button type="submit" className="ui huge primary button">Sign in with Facebook <i className="right arrow icon"></i></button>
                       </form>
@@ -115,7 +115,7 @@ class Login extends React.Component {
                           <p>- RyPizzle Records</p>
                         </div>
                         <div className="column">
-                          <h3>"Yo yo."</h3>
+                          <h3>"Evently allows the host to focus on the attendants"</h3>
                           <p>- Chief Fun Officer Peter Tan</p>
                         </div>
                       </div>
