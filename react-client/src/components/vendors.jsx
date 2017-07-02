@@ -52,25 +52,10 @@ class Vendors extends React.Component {
   render() {
     return (
 			<div>
-        <div className="container">
-        
-          <ul className="nav nav-tabs">
-
-            <li className='nav-item'>
-              <a className={'nav-link '.concat(this.state.showTab === 'signup' ? 'active' : null)} onClick={()=>this.showTab('signup')} href='#'>Vender Sign Up</a>
-            </li>
-            <li className='nav-item'>
-              <a className={'nav-link '.concat(this.state.showTab === 'upcoming' ? 'active' : null)} onClick={()=>this.showTab('upcoming')} href='#'>Upcoming Events</a>
-            </li>
-            <li className='nav-item'>
-              <a className={'nav-link '.concat(this.state.showTab === 'bidded' ? 'active' : null)} onClick={()=>this.showTab('bidded')} href='#'>Bidded Events</a>
-            </li>
-            <li className='nav-item'>
-              <a className={'nav-link '.concat(this.state.showTab === 'matched' ? 'active' : null)} onClick={()=>this.showTab('matched')} href='#'>Matched Events</a>
-            </li>
-
-          </ul>
-        </div>
+          <button className="ui left-attached teal button" onClick={()=>this.showTab('signup')}>Vender Sign Up</button>
+          <button className="right-attached ui teal button" onClick={()=>this.showTab('upcoming')}>Upcoming Events</button>
+          <button className="right-attached ui teal button" onClick={()=>this.showTab('bidded')}>Bidded Events</button>
+          <button className="right-attached ui teal button" onClick={()=>this.showTab('matched')}>Matched Events</button>
         
         {this.state.showTab === 'signup' ? <VendorSignUp/> : null}
 				

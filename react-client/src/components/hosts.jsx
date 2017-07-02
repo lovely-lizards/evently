@@ -22,22 +22,11 @@ class Hosts extends React.Component {
 
   render() {
     return (
-			<div>
-        <div className="container">        
-          <ul className="nav nav-tabs">
-
-            <li className='nav-item'>
-              <a className={'nav-link '.concat(this.state.showTab === 'create' ? 'active' : null)} onClick={()=>this.showTab('create')} href='#'>Create Event</a>
-            </li>
-            <li className='nav-item'>
-              <a className={'nav-link '.concat(this.state.showTab === 'current' ? 'active' : null)} onClick={()=>this.showTab('current')} href='#'>Current Events</a>
-            </li>
-            <li className='nav-item'>
-              <a className={'nav-link '.concat(this.state.showTab === 'past' ? 'active' : null)} onClick={()=>this.showTab('past')} href='#'>Past Events</a>
-            </li>
-          
-          </ul>
-        </div>
+			<div>  
+      
+        <button className="ui left-attached teal button" onClick={()=>this.showTab('create')}>Create Event</button>
+        <button className="right-attached ui teal button" onClick={()=>this.showTab('current')}>Current Events</button>
+        <button className="right-attached ui teal button" onClick={()=>this.showTab('past')}>Past Events</button>
 
 				<div>
 
