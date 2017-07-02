@@ -16,7 +16,6 @@ class Hosts extends React.Component {
 
         
 	showTab(tab) {
-
   this.setState({
   			showTab: tab
     })
@@ -46,7 +45,7 @@ class Hosts extends React.Component {
 
 					{this.state.showTab === 'current' ? <CurrentEvents/> : null}
 					{this.state.showTab === 'create' ? <CreateEvent/> : null}
-					{this.state.showTab === 'past' ? <PastEvents events={this.state.past} /> : null}
+					{this.state.showTab === 'past' ? <PastEvents/> : null}
 
 				</div>
 			</div>
