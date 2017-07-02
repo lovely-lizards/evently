@@ -14,13 +14,13 @@ class UpcomingEvents extends React.Component {
     return (
       <div>
 				<div>{this.props.events.map(event =>
-					<div className="card">
-						<div className="card-block">
-							<h4 className="card-title font-weight-bold text-success">{event.title}</h4>
-							<h6 className="card-subtitle mb-2 text-muted">Date: {event.date}</h6>
-							<h6 className="card-subtitle mb-2 text-muted">Location: {event.location}</h6>
+					<div className="ui card">
+						<div className="content">
+							<h4 className="header">{event.title}</h4>
+							<h6 className="meta">Date: {event.date}</h6>
+							<h6 className="meta">Location: {event.location}</h6>
 							<div>
-								<h5 className="font-weight-bold-italic">Needs: </h5> {
+								<button className="ui teal button">Needs: </button> {
 									Object.keys(event.needs).map(need => 
 										<div className="container">
 											<div className="row">{need}</div>

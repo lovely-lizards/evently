@@ -36,15 +36,15 @@ class App extends React.Component {
           <h1>Evently</h1>
           <div className="container">
 
-            <ul className="nav nav-pills">
+            <div className="ui pointing menu">
 
-              <li role="presentation" className='nav-item'>
-                <a className={'nav-link '.concat(this.state.view === 'host' ? 'active' : null)} onClick={()=>this.changeView('host')} href='#'>Host</a>
-              </li>
-              <li role="presentation" className='nav-item'>
-                <a className={'nav-link '.concat(this.state.view === 'vendor' ? 'active' : null)} onClick={()=>this.changeView('vendor')} href='#'>Vendor</a>
-              </li>
-            </ul>  
+              <div className="item">
+                <a onClick={()=>this.changeView('host')} href='#'>Host</a>
+              </div>
+              <div className='item'>
+                <a onClick={()=>this.changeView('vendor')} href='#'>Vendor</a>
+              </div>
+            </div>  
           
           </div>
           <div>
