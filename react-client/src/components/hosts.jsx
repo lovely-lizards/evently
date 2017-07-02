@@ -9,32 +9,11 @@ class Hosts extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      events: [],
-			data: [0],
     }
   }
 
-  componentDidMount() {
-		var that = this;
-    utils.getEventsByUser(data => {
-			var currentData = [];
-			var pastData = [];
-			data.forEach(function(data) {
-				if (new Date(data.date) > new Date()) {
-					currentData.push(data);
-				} else {
-					pastData.push(data);
-				}
-				that.setState({
-					current: currentData,
-					past: pastData
-				});
-			});
-    });
-  }
         
 	showTab(tab) {
-
   this.setState({
   			showTab: tab
     })
@@ -64,7 +43,7 @@ class Hosts extends React.Component {
 
 					{this.state.showTab === 'current' ? <CurrentEvents/> : null}
 					{this.state.showTab === 'create' ? <CreateEvent/> : null}
-					{this.state.showTab === 'past' ? <PastEvents events={this.state.past} /> : null}
+					{this.state.showTab === 'past' ? <PastEvents/> : null}
 
 				</div>
 			</div>

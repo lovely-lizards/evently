@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ShowNeedsHost from './ShowNeedsHost.jsx';
+import ShowNeeds from './ShowNeeds.jsx';
 import $ from 'jquery';
 import utils from '../utils.js';
 
-class CurrentEvents extends React.Component {
+export default class CurrentEvents extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -16,9 +16,9 @@ class CurrentEvents extends React.Component {
 	componentDidMount() {
 		utils.getEventsByUser(events => {
 			var upcomingEvents = [];
-			events.forEach((events) => {
-				if (new Date(events.date) > new Date()) {
-					upcomingEvents.push(events);
+			events.forEach((event) => {
+				if (new Date(event.date) > new Date()) {
+					upcomingEvents.push(event);
 				}
 			});			
 			this.setState({
@@ -35,7 +35,7 @@ class CurrentEvents extends React.Component {
 			<div>
 				{
 				this.state.events.map((event, idx) =>
-					<ShowNeedsHost event={event} idx={idx}/>
+					<ShowNeeds event={event} key={idx}/>
 				)
 			}
 			</div>
@@ -43,4 +43,3 @@ class CurrentEvents extends React.Component {
 	}
 }
 
-export default CurrentEvents
