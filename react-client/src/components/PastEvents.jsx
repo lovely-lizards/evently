@@ -41,12 +41,3 @@ export default class PastEvents extends React.Component {
 	}
 }
 
-
-// this.state.pastEvents.map(function(event, key) {
-// 	return (
-// 	<div className='events' key={key}>
-// 		<div>{event.title}</div>
-// 		<div>{event.date}</div>
-// 		<div>{event.location}</div>
-// 	</div> )
-// 	})
