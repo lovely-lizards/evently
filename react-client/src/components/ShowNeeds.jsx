@@ -5,6 +5,7 @@ export default class ShowNeeds extends React.Component {
     super(props);
     this.state = {
       isHidden: true,
+      tab: this.props.tab
     }
   this.toggleNeeds = this.toggleNeeds.bind(this);
   }
@@ -34,8 +35,18 @@ export default class ShowNeeds extends React.Component {
                   <div>
                     {
                       Object.keys(this.props.event.needs[need]).map((item, idx) => 
-                        <li key={idx}>{item === 'budget' ? 'Budget: ' + this.props.event.needs[need].budget: item}</li>
+                        <li key={idx}>{item === 'budget' ? 'Budget: ' + this.props.event.needs[need].budget: item}</li>      
                       )
+                    }
+                    {
+                      this.state.tab === 'upcoming' ? 
+                      <form>
+                        <button className="tiny ui teal button" type="submit">
+                        Bid
+                        </button>
+                        <input type="string" name="Place Bid"/>
+                      </form>                      
+                      : null
                     }
                   </div>
                 </div>

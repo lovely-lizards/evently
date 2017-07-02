@@ -76,7 +76,7 @@ class Vendors extends React.Component {
 				
         <div>
 				
-        	{this.state.showTab === 'upcoming' ? <UpcomingEvents events={this.state.events}/> : null}
+        	{this.state.showTab === 'upcoming' ? <UpcomingEvents tab={this.state.showTab}/> : null}
 					{this.state.showTab === 'bidded' ? <div>bidded list</div> : null}
 					{this.state.showTab === 'matched' ? <MatchedList list={this.state.events} user={this.state.userId} service={this.state.serviceData}/> : null}
 				</div>
