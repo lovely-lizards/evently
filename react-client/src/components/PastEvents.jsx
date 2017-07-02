@@ -33,7 +33,7 @@ export default class PastEvents extends React.Component {
 				{
 
 				this.state.pastEvents.map((event, idx) => 
-					<ShowNeeds event={event} idx={idx}/>
+					<ShowNeeds event={event} key={idx}/>
 				)
 				}
 			</div>

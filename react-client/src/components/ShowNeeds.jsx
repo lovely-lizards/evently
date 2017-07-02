@@ -28,13 +28,13 @@ export default class ShowNeeds extends React.Component {
             <button onClick={this.toggleNeeds} className="ui teal button">Needs: </button>
             {
               this.state.isHidden === false ?  
-              Object.keys(this.props.event.needs).map(need => 
+              Object.keys(this.props.event.needs).map((need, idx) => 
                 <div>
-                  <div>{need}</div>
+                  <div key={idx}>{need}</div>
                   <div>
                     {
-                      Object.keys(this.props.event.needs[need]).map(item => 
-                        <li>{item === 'budget' ? 'Budget: ' + this.props.event.needs[need].budget: item}</li>
+                      Object.keys(this.props.event.needs[need]).map((item, idx) => 
+                        <li key={idx}>{item === 'budget' ? 'Budget: ' + this.props.event.needs[need].budget: item}</li>
                       )
                     }
                   </div>

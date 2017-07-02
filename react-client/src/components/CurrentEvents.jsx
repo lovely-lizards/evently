@@ -35,7 +35,7 @@ export default class CurrentEvents extends React.Component {
 			<div>
 				{
 				this.state.events.map((event, idx) =>
-					<ShowNeeds event={event} idx={idx}/>
+					<ShowNeeds event={event} key={idx}/>
 				)
 			}
 			</div>
