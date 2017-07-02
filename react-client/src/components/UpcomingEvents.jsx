@@ -1,44 +1,42 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import utils from '../utils.js';
+import ShowNeeds from './ShowNeeds.jsx';
 
 class UpcomingEvents extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-
+			events: [],
+			tab: this.props.tab
     }
   }
   
+	componentDidMount() {
+		let upcomingEvents = [];
+		utils.getEvents(events => {
+			events.forEach((event) => {
+				if (new Date(event.date) > new Date()) {
+					upcomingEvents.push(event);
+				}
+			});
+			this.setState({
+				events: upcomingEvents.sort((a, b) => {
+					return new Date(a.date) > new Date(b.date);
+				})
+			});
+		});
+	}
   
   render() {
     return (
       <div>
-				<div>{this.props.events.map(event =>
-					<div className="ui card">
-						<div className="content">
-							<h4 className="header">{event.title}</h4>
-							<h6 className="meta">Date: {event.date}</h6>
-							<h6 className="meta">Location: {event.location}</h6>
-							<div>
-								<button className="ui teal button">Needs: </button> {
-									Object.keys(event.needs).map(need => 
-										<div className="container">
-											<div className="row">{need}</div>
-											<div className="col-xl-2">
-												{
-													Object.keys(event.needs[need]).map( item => 
-														<li>{item === 'budget' ? 'Budget: ' + event.needs[need].budget: item}</li>
-													)
-												}
-											</div>
-										</div>
-									)
-								}
-							</div>
-
-						</div>					
-					</div>
-				)}
+				<div>
+					{
+						this.state.events.map((event, idx) => 
+							<ShowNeeds event={event} key={idx} tab={this.state.tab}/>
+						)
+					}
 				</div>
 			</div>
 
@@ -46,5 +44,6 @@ class UpcomingEvents extends React.Component {
   }
 
 }
+
 
 export default UpcomingEvents
