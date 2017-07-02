@@ -36,14 +36,9 @@ class App extends React.Component {
           <h1>Evently</h1>
           <div className="container">
 
-            <div className="ui pointing menu">
-
-              <div className="item">
-                <a onClick={()=>this.changeView('host')} href='#'>Host</a>
-              </div>
-              <div className='item'>
-                <a onClick={()=>this.changeView('vendor')} href='#'>Vendor</a>
-              </div>
+            <div className="ui tabular menu">
+              <button class={"ui left-attached teal basic button ".concat(this.state.currentPage === 'host' ? 'active' : null)} onClick={()=>this.changeView('host')}>Host</button>
+              <button class={"right-attached ui teal basic button ".concat(this.state.currentPage === 'vendor' ? 'active' : null)} onClick={()=>this.changeView('vendor')}>Vendor</button>
             </div>  
           
           </div>
