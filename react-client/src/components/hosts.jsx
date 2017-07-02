@@ -19,7 +19,6 @@ class Hosts extends React.Component {
     utils.getEventsByUser(data => {
 			var currentData = [];
 			var pastData = [];
-			console.log(data);
 			data.forEach(function(data) {
 				if (new Date(data.date) > new Date()) {
 					currentData.push(data);

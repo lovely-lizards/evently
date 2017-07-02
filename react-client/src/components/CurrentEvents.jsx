@@ -14,9 +14,17 @@ class CurrentEvents extends React.Component {
 	}
 
 	componentDidMount() {
-		utils.getEventsByUser(data => {
+		utils.getEventsByUser(events => {
+			var upcomingEvents = [];
+			events.forEach((events) => {
+				if (new Date(events.date) > new Date()) {
+					upcomingEvents.push(events);
+				}
+			});			
 			this.setState({
-				events: data
+				events: upcomingEvents.sort((a,b) => {
+					return new Date(a.date) > new Date(b.date);
+				})
 			})
 		})
 	}
