@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default class ShowNeedsHost extends React.Component {
+export default class ShowNeeds extends React.Component {
   constructor(props){
     super(props);
     this.state = {

@@ -1,29 +1,52 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import utils from '../utils.js';
+import ShowNeeds from './ShowNeeds.jsx';
 
-class PastEvents extends React.Component {
+export default class PastEvents extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-		}
+			pastEvents: []
+		};
 	}
 
-	
+	componentDidMount() {
+		utils.getEventsByUser(events => {
+			let pastEvents = [];
+			events.forEach(event => {
+				if (new Date(event.date) < new Date()) {
+					pastEvents.push(event);
+				}
+			});
+			this.setState({
+				pastEvents: pastEvents.sort((a,b) => {
+					return new Date(a.date) < new Date(b.date);
+				})
+			});
+		});
+	}
 
 	render() {
 		return (
-			<div className='current-events'>
-				{this.props.events.map(function(data, key) {
-					return (
-					<div className='events' key={key}>
-						<div>{data.title}</div>
-						<div>{data.date}</div>
-						<div>{data.location}</div>
-					</div> )
-				})}
+			<div className='past-events'>
+				{
+
+				this.state.pastEvents.map((event, idx) => 
+					<ShowNeeds event={event} idx={idx}/>
+				)
+				}
 			</div>
 		);
 	}
 }
 
-export default PastEvents
+
+// this.state.pastEvents.map(function(event, key) {
+// 	return (
+// 	<div className='events' key={key}>
+// 		<div>{event.title}</div>
+// 		<div>{event.date}</div>
+// 		<div>{event.location}</div>
+// 	</div> )
+// 	})

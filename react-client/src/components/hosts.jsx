@@ -14,24 +14,6 @@ class Hosts extends React.Component {
     }
   }
 
-  componentDidMount() {
-		var that = this;
-    utils.getEventsByUser(data => {
-			var currentData = [];
-			var pastData = [];
-			data.forEach(function(data) {
-				if (new Date(data.date) > new Date()) {
-					currentData.push(data);
-				} else {
-					pastData.push(data);
-				}
-				that.setState({
-					current: currentData,
-					past: pastData
-				});
-			});
-    });
-  }
         
 	showTab(tab) {
 
