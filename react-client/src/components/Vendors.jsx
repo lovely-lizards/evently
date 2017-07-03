@@ -24,7 +24,7 @@ class Vendors extends React.Component {
       utils.getVendorsById(id.id , (data) => {
 
         var services = [];
-
+        console.log('SERVICES', data.service);
         if (data.service.food) {
           var foodService = Object.keys(data.service.food);
           services.push(foodService);
