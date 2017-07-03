@@ -22,7 +22,7 @@ export default class ShowNeeds extends React.Component {
 
   render () {
     return (
-      <div className="ui card" key={this.props.idx}>
+      <div className="card" key={this.props.idx}>
         <div className="content">
           <h4 className="header">{this.props.event.title}</h4>
           <h6 className="meta">Date: {this.props.event.date}</h6>
