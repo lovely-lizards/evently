@@ -75,7 +75,7 @@ class Login extends React.Component {
                       </h1>
                       <h2>Do whatever you want, when you want to.</h2>
                       <form action="/auth/facebook">
-                      <button type="submit" className="ui huge primary button">Sign in with Facebook <i className="right arrow icon"></i></button>
+                      <button type="submit" className="ui huge primary button">Sign in with Facebook &nbsp;&nbsp;<i className="facebook square icon"></i></button>
                       </form>
                     </div>
 
