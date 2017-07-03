@@ -11,7 +11,14 @@ class UpcomingEvents extends React.Component {
 			tab: this.props.tab
     }
   }
-  
+
+  /*  
+	Load all events from user, check the event against the current date
+	If event is newer than current date, sort the events from the most 
+	recent upcoming event. Then push the event into the array then 
+	set the state to that array.
+	*/
+
 	componentDidMount() {
 		let upcomingEvents = [];
 		utils.getEvents(events => {
