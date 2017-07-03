@@ -10,7 +10,12 @@ export default class PastEvents extends React.Component {
 			pastEvents: []
 		};
 	}
-
+	/*  
+	Load all events from user, check the event against the current date
+	If event is older than current date, sort the events from the most 
+	recent expired event. Then push the event into the array then 
+	set the state to that array.
+	*/
 	componentDidMount() {
 		utils.getEventsByUser(events => {
 			let pastEvents = [];

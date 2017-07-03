@@ -234,7 +234,9 @@ class CreateEvent extends React.Component {
 					Additional Information: <br/>
 					<textarea rows="6" cols="60" value={this.state.notes} onChange={this.handleNoteChange.bind(this)}></textarea>
 				</div>
-				<button onClick={this.submitData.bind(this)}> Submit Form </button>
+				<form>
+					<button className="tiny ui teal button" type="submit" onClick={this.submitData.bind(this)}> Post Event </button>
+				</form>
 			</div>
 		)
 	}
