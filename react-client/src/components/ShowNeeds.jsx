@@ -10,6 +10,8 @@ export default class ShowNeeds extends React.Component {
   this.toggleNeeds = this.toggleNeeds.bind(this);
   }
 
+
+  /*  Toggles the isHidden state */
 	toggleNeeds () {
 		this.setState({
 			isHidden : !this.state.isHidden
@@ -28,6 +30,7 @@ export default class ShowNeeds extends React.Component {
           <div className="description">
             <button onClick={this.toggleNeeds} className="ui teal button">Needs: </button>
             {
+              /*  If state.isHidden is false renders the following */
               this.state.isHidden === false ?  
               Object.keys(this.props.event.needs).map((need, idx) => 
                 <div>

@@ -1,6 +1,7 @@
 # Project Name
 
-> Pithy project description
+# Evently #
+- Evently creates a platform to connect vendors to hosts simplifying logistical needs for the hosts and provides business opportunities for the vendors.
 
 ## Team
 
