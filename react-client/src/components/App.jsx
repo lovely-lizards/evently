@@ -37,8 +37,8 @@ class App extends React.Component {
           <div className="container">
 
             <div className="ui tabular menu">
-              <button class={"ui left-attached teal basic button ".concat(this.state.currentPage === 'host' ? 'active' : null)} onClick={()=>this.changeView('host')}>Host</button>
-              <button class={"right-attached ui teal basic button ".concat(this.state.currentPage === 'vendor' ? 'active' : null)} onClick={()=>this.changeView('vendor')}>Vendor</button>
+              <button className={"ui left-attached teal basic button ".concat(this.state.currentPage === 'host' ? 'active' : null)} onClick={()=>this.changeView('host')}>Host</button>
+              <button className={"right-attached ui teal basic button ".concat(this.state.currentPage === 'vendor' ? 'active' : null)} onClick={()=>this.changeView('vendor')}>Vendor</button>
             </div>  
           
           </div>
