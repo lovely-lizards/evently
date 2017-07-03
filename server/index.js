@@ -36,7 +36,7 @@ passport.serializeUser(function(user, cb) {
 });
 
 passport.deserializeUser(function(id, cb) {
-  db.Users.find({id : id}, function(err, user){
+  db.Users.findOne({id : id}, function(err, user){
      if(err) cb(err);
         cb(null, user);
      });
@@ -73,7 +73,7 @@ app.get('/api/events', function(req, res) {
 
 app.get('/api/user', function(req, res) {
   // We made this route to get the current users' ID to use in the front end. 
-  db.Users.find({id: req.user.id}, function(err, user){
+  db.Users.findOne({id: req.user.id}, function(err, user){
 
     if (err) {
       console.log(err);
