@@ -39,7 +39,7 @@ upcoming events
 
 	render() {
 		return (
-			<div>
+			<div className="ui four cards">
 				{
 				this.state.events.map((event, idx) =>
 					<ShowNeeds event={event} key={idx}/>

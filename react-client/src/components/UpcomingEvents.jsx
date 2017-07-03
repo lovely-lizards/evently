@@ -31,7 +31,7 @@ class UpcomingEvents extends React.Component {
   render() {
     return (
       <div>
-				<div>
+				<div className="ui four cards">
 					{
 						this.state.events.map((event, idx) => 
 							<ShowNeeds event={event} key={idx} tab={this.state.tab}/>
