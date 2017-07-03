@@ -159,33 +159,3 @@ class Login extends React.Component {
 }
 
 ReactDOM.render(<Login />, document.getElementById('evently'));
-
-/*
- {        
-          this.state.path !== '/main' ? 
-           <div>
-              <div className="ui large top fixed hidden menu">
-                <div class="ui container">
-                  <a class="active item">Home</a>
-                  <div class="right menu">
-                    <div class="item">
-                      <a class="ui button">Log in</a>
-                    </div>
-                    <div class="item">
-                      <a class="ui primary button">Sign Up</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <h1 className="ui header">Evently</h1>
-              <p>
-              Simplify hosting events by connecting vendors to the host to eliminate the logistical needs
-              </p>
-
-              <p>Login in and get started</p>
-              <form action="/auth/facebook">
-                <button type="submit" className="ui blue button">Login</button>              
-              </form>
-            </div> : <App/>
-        }
-*/
