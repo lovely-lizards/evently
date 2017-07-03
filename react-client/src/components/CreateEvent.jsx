@@ -109,7 +109,7 @@ class CreateEvent extends React.Component {
 	}
 
 	photoBudgetChange(event) {
-		this.setState({foodBudget: event.target.value})
+		this.setState({photoBudget: event.target.value})
 		console.log(this.state.photoBudget);
 	}
 
