@@ -158,8 +158,9 @@ class CreateEvent extends React.Component {
 			});
 		}
 		console.log(submitData);
-
+		
 		utils.createEvent(submitData);
+		alert(`Your event ${this.state.title} has been created`)
 	}
 
 
