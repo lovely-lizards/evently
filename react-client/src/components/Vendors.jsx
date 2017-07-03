@@ -18,28 +18,34 @@ class Vendors extends React.Component {
   }
 
   componentDidMount() {
-    var that = this
+
     utils.getUserId((id) => {
-      console.log(id);
+
       utils.getVendorsById(id.id , (data) => {
-        console.log(data);
-        var foodService = Object.keys(data.service.food);
-        var musicService = Object.keys(data.service.music);
-        var photoService = Object.keys(data.service.photography); 
-        that.setState({
-          serviceData: [foodService, musicService, photoService]
+
+        var services = [];
+
+        if (data.service.food) {
+          var foodService = Object.keys(data.service.food);
+          services.push(foodService);
+        }
+
+        if (data.service.music) {
+          var musicService = Object.keys(data.service.music);
+          services.push(musicService);
+        }
+
+        if (data.service.photography) {
+          var photoService = Object.keys(data.service.photography);
+          services.push(photoService);
+        }
+
+        this.setState({
+          serviceData: services,
+          userId: id
         });
 		  });
-      this.setState({userId: id});
     })
-    utils.getEvents(data => {
-      this.setState({
-        events: data
-      });
-    });
-    console.log(this.state.userId);
-    console.log(this.state.events);
-    console.log(this.state.data);
   }
 
 	showTab(tab) {
