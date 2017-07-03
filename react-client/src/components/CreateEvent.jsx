@@ -23,21 +23,9 @@ class CreateEvent extends React.Component {
     }
   }
 
-	checkListsFood(event) {
-		var isChecked = event.target.checked;
-		var foodValue = event.target.value;
-		if (isChecked) {
-			this.setState((prevState, props) => ({
-				foodPicks: prevState.foodPicks.concat([foodValue])
-			}))
-		} else {
-			var foodIndex = this.state.foodPicks.indexOf(foodValue);
-			var newArray = this.state.foodPicks.splice(foodIndex,1);
-			this.setState({
-				foodPicks: this.state.foodPicks
-			});
-		}
-	}
+	//checkListFood, music, photo are all similar
+		//this function makes sure the right type of food, music, and  photo are saved before submitting to the DB.
+
 	checkListFood(event) {
 		var isChecked = event.target.checked;
 		var foodValue = event.target.value;
@@ -88,6 +76,8 @@ class CreateEvent extends React.Component {
 		console.log(this.state.photoPicks);
 	}
 
+	//these handle changes are to save the text into the state before being posted onto the database
+
 	handleAddressChange(event) {
 		this.setState({address: event.target.value})
 		console.log(this.state.address);
@@ -124,7 +114,8 @@ class CreateEvent extends React.Component {
 		console.log(this.state.title);
 	}
 
-
+	//the submitData places all the information from the states into a single object
+		//packaged to be sent to the DB
 	submitData() {
 		var numberDate = new Date(this.state.date);
 		console.log(numberDate);
@@ -167,8 +158,9 @@ class CreateEvent extends React.Component {
 			});
 		}
 		console.log(submitData);
-
+		
 		utils.createEvent(submitData);
+		alert(`Your event ${this.state.title} has been created`)
 	}
 
 

@@ -13,21 +13,16 @@ class App extends React.Component {
     }
   }
 
-  ComponentDidMount() {
-    console.log('hi');
-    var that = this
-    utils.getUserId( (data) => 
-      console.log(data)
-    )
-    console.log('hi');
-    console.log(this.state.userId);
-  }
+  //this function sets the current page, on the render
+    //when vendors or host is clicked, it will change currentPage to that
+    //and it will render the page
 
   changeView(page) {
     this.setState({
       currentPage: page
     })
   }
+
   render () {
     return (
       <div>
