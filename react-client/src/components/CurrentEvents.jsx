@@ -12,7 +12,14 @@ export default class CurrentEvents extends React.Component {
 			events: []		
 		}
 	}
+/*  
 
+When the component mounts it will grab all the events by 
+the user and check the date against today's date, set the state and 
+sort the events from most recent upcoming events to the latest
+upcoming events
+
+*/
 	componentDidMount() {
 		utils.getEventsByUser(events => {
 			var upcomingEvents = [];
