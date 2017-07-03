@@ -117,8 +117,8 @@ class VendorSignUp extends React.Component {
     return (
       <div>
         <div>
-          <div>Organization</div> <input type="text" name="organization-title" onChange={this.organizationChange.bind(this)}/>
-          <h1>Service</h1>
+          <h2>Organization Name</h2> <input type="text" name="organization-title" onChange={this.organizationChange.bind(this)}/>
+          <h2>Service</h2>
           <ul>
             <li>Food</li>
             {this.state.foodOptions.map((food,key) => (
@@ -156,11 +156,12 @@ class VendorSignUp extends React.Component {
             ))}
           </ul>
           <div className="location">
-            <h1>location</h1>
+            <h2>Location</h2>
             Address: <input type="text" name="address" value={this.state.address} onChange={this.handleAddressChange.bind(this)}/>
           </div>
+          <div>&nbsp;</div>
           <div className="description">
-            Organization Description
+            <h2> Organization Description </h2>
             <li>
               <textarea rows="6" cols="60" value={this.state.notes} onChange={this.handleDescriptionChange.bind(this)}></textarea>
             </li>

@@ -176,9 +176,9 @@ class CreateEvent extends React.Component {
 		return (
 			<div>
 				<div id='needs fields'>
-					<div>Event Title</div> <input type="text" name="event-title" onChange={this.titleChange.bind(this)}/>
-					<div>Date of Event</div> <input type="date" name="event-date" onChange={this.dateChange.bind(this)}/>
-					<h1>Needs</h1>
+					<h2>Event Title</h2> <input type="text" name="event-title" onChange={this.titleChange.bind(this)}/>
+					<h4>Date of Event</h4> <input type="date" name="event-date" onChange={this.dateChange.bind(this)}/>
+					<h4>Needs</h4>
 						<ul>
 							<li>Food</li>
 							{this.state.foodOptions.map((food, key) => (
@@ -225,11 +225,12 @@ class CreateEvent extends React.Component {
 						</ul>
 				</div>
 				<div id='location'>
-					<h1>Location</h1>
+					<h4>Location</h4>
 					Address: <input type="text" name="address" value={this.state.address} onChange={this.handleAddressChange.bind(this)} />
 				</div>
+				<div>&nbsp;</div>
 				<div id='Note'>
-					<h1>Notes</h1>
+					<h4>Notes</h4>
 					Additional Information: <br/>
 					<textarea rows="6" cols="60" value={this.state.notes} onChange={this.handleNoteChange.bind(this)}></textarea>
 				</div>
