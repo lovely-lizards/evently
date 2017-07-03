@@ -34,7 +34,7 @@ export default class PastEvents extends React.Component {
 
 	render() {
 		return (
-			<div className='past-events'>
+			<div className='past-events ui four cards'>
 				{
 
 				this.state.pastEvents.map((event, idx) => 
